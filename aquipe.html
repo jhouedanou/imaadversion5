@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Équipe & Gouvernance — IMAAD Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A; --navy-mid: #112844; --navy-light: #1a3556;
+    --gold: #C7A14A; --gold-light: #d9b86a; --gold-dark: #a8853a;
+    --white: #FFFFFF; --off-white: #F8F6F1;
+    --grey-mid: #E0DDD6; --grey-text: #8A8A8A; --text-body: #2C2C2C;
+    --font-title: 'Montserrat', sans-serif; --font-body: 'Open Sans', sans-serif;
+    --font-serif: 'Cormorant Garamond', serif;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-soft: 0 8px 40px rgba(11,31,58,0.10);
+    --shadow-card: 0 4px 24px rgba(11,31,58,0.13);
+    --shadow-gold: 0 4px 24px rgba(199,161,74,0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--text-body); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  h1,h2,h3,h4 { font-family: var(--font-title); font-weight: 700; line-height: 1.15; }
+  .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2.5rem; }
+  .label-section { font-family: var(--font-title); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.75rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-title); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 4px; border: none; cursor: pointer; transition: all var(--transition); }
+  .btn-gold { background: var(--gold); color: var(--navy); box-shadow: var(--shadow-gold); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; } .reveal-delay-5 { transition-delay: 0.5s; } .reveal-delay-6 { transition-delay: 0.6s; }
+
+  /* Header */
+  .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,31,58,0.97); backdrop-filter: blur(12px); padding: 1rem 0; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .logo { display: flex; align-items: center; gap: 1rem; }
+  .logo-name { font-family: var(--font-title); font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12em; color: var(--white); text-transform: uppercase; }
+  .logo-sub { font-family: var(--font-title); font-size: 0.52rem; font-weight: 400; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-top: 2px; display: block; }
+  nav { display: flex; align-items: center; gap: 2.5rem; }
+  nav a { font-family: var(--font-title); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.8); transition: color var(--transition); }
+  nav a:hover { color: var(--white); }
+  nav a.active { color: var(--gold); }
+
+  /* Hero banner with team photo placeholder */
+  .team-hero {
+    background: linear-gradient(135deg, #060f1c 0%, #0B1F3A 50%, #0d2540 100%);
+    padding: 140px 0 80px;
+    position: relative;
+    overflow: hidden;
+    min-height: 460px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .team-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(199,161,74,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(199,161,74,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  /* Horizontal gold line */
+  .team-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  /* Silhouette placeholder */
+  .team-silhouettes {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 80%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 3rem;
+    opacity: 0.15;
+  }
+  .silhouette {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .silhouette-head { width: 40px; height: 40px; border-radius: 50%; background: rgba(199,161,74,0.6); }
+  .silhouette-body { width: 64px; height: 120px; background: rgba(199,161,74,0.4); border-radius: 8px 8px 0 0; margin-top: 6px; }
+  .team-hero-content { position: relative; z-index: 1; }
+  .breadcrumb { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .breadcrumb a { font-family: var(--font-title); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); transition: color var(--transition); }
+  .breadcrumb span { color: rgba(199,161,74,0.5); font-size: 0.7rem; }
+  .breadcrumb .current { color: var(--gold); font-family: var(--font-title); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  .team-hero h1 { color: var(--white); font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 1rem; }
+  .team-hero p { color: rgba(255,255,255,0.65); max-width: 560px; font-size: 1rem; line-height: 1.8; }
+
+  /* Direction section */
+  .direction { background: var(--off-white); padding: 96px 0; }
+  .direction-header { text-align: center; margin-bottom: 4rem; }
+  .direction-header h2 { color: var(--navy); }
+  .direction-header p { color: #666; max-width: 500px; margin: 1rem auto 0; }
+  .direction-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .member-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition);
+    position: relative;
+  }
+  .member-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-card); }
+  .member-photo {
+    height: 280px;
+    background: linear-gradient(135deg, var(--navy-light), var(--navy));
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .member-photo::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(199,161,74,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(199,161,74,0.06) 1px, transparent 1px); background-size: 24px 24px; }
+  .member-initials {
+    position: relative;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(199,161,74,0.12);
+    border: 2px solid rgba(199,161,74,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-title);
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(199,161,74,0.7);
+  }
+  /* Hover overlay with bio */
+  .member-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11,31,58,0.94);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity var(--transition);
+    z-index: 2;
+  }
+  .member-card:hover .member-overlay { opacity: 1; }
+  .member-overlay p { color: rgba(255,255,255,0.8); font-size: 0.85rem; line-height: 1.7; text-align: center; margin-bottom: 1.5rem; }
+  .member-linkedin {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    transition: all var(--transition);
+  }
+  .member-linkedin:hover { background: var(--gold); color: var(--navy); }
+  .member-linkedin svg { width: 18px; height: 18px; }
+  .gold-bar { height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); }
+  .member-info { padding: 1.5rem 1.75rem; }
+  .member-name { font-size: 1.05rem; color: var(--navy); margin-bottom: 0.3rem; }
+  .member-role { font-family: var(--font-title); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: block; }
+  .member-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .member-tag { font-family: var(--font-title); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.06em; background: var(--off-white); border: 1px solid var(--grey-mid); border-radius: 3px; padding: 0.25rem 0.6rem; color: #666; }
+
+  /* Country managers */
+  .responsables { background: var(--white); padding: 80px 0; }
+  .resp-header { margin-bottom: 3rem; }
+  .resp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .resp-card {
+    border: 1px solid var(--grey-mid);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all var(--transition);
+    text-align: center;
+  }
+  .resp-card:hover { border-color: rgba(199,161,74,0.4); background: var(--off-white); }
+  .resp-flag { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+  .resp-country { font-family: var(--font-title); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.25rem; }
+  .resp-city { font-size: 0.8rem; color: var(--grey-text); }
+
+  /* Advisory board */
+  .advisory { background: var(--navy); padding: 80px 0; }
+  .advisory-header { text-align: center; margin-bottom: 4rem; }
+  .advisory-header h2 { color: var(--white); }
+  .advisory-header p { color: rgba(255,255,255,0.6); max-width: 500px; margin: 1rem auto 0; }
+  .advisory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .advisor-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(199,161,74,0.15);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all var(--transition);
+  }
+  .advisor-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(199,161,74,0.35); }
+  .advisor-name { font-size: 1rem; color: var(--white); margin-bottom: 0.35rem; }
+  .advisor-role { font-family: var(--font-title); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: block; }
+  .advisor-bio { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+  /* Footer */
+  .footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 48px 0 0; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; font-size: 0.8rem; color: rgba(255,255,255,0.35); border-top: 1px solid rgba(199,161,74,0.12); }
+
+  @media (max-width: 768px) {
+    .direction-grid, .advisory-grid { grid-template-columns: 1fr 1fr; }
+    .resp-grid { grid-template-columns: 1fr 1fr; }
+    nav { display: none; }
+    .container { padding: 0 1.5rem; }
+    .team-silhouettes { display: none; }
+  }
+  @media (max-width: 480px) {
+    .direction-grid, .advisory-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg width="36" height="36" viewBox="0 0 44 44" fill="none"><rect width="44" height="44" rx="4" fill="rgba(199,161,74,0.08)"/><path d="M22 6 L36 14 L36 30 L22 38 L8 30 L8 14 Z" stroke="#C7A14A" stroke-width="1.2" fill="none"/><circle cx="22" cy="22" r="3" fill="#C7A14A"/></svg>
+        <div><div class="logo-name">IMAAD</div><span class="logo-sub">Financial Group</span></div>
+      </a>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="domaines.html">Domaines</a>
+        <a href="projets.html">Projets</a>
+        <a href="equipe.html" class="active">Équipe</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="btn btn-gold">Nous contacter</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="team-hero">
+  <div class="team-silhouettes">
+    <div class="silhouette"><div class="silhouette-head"></div><div class="silhouette-body"></div></div>
+    <div class="silhouette" style="margin-bottom:20px;"><div class="silhouette-head" style="width:48px;height:48px;"></div><div class="silhouette-body" style="width:72px;height:140px;"></div></div>
+    <div class="silhouette"><div class="silhouette-head"></div><div class="silhouette-body" style="height:110px;"></div></div>
+    <div class="silhouette" style="margin-bottom:30px;"><div class="silhouette-head" style="width:44px;height:44px;"></div><div class="silhouette-body" style="height:125px;"></div></div>
+  </div>
+  <div class="container">
+    <div class="team-hero-content reveal">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>›</span>
+        <span class="current">Équipe & Gouvernance</span>
+      </div>
+      <span class="label-section">Leadership</span>
+      <h1>Équipe & Gouvernance</h1>
+      <p>Une équipe dirigeante forgée par l'expérience internationale, réunie autour d'une vision commune : accélérer le développement du continent africain par la finance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Direction Exécutive -->
+<section class="direction">
+  <div class="container">
+    <div class="direction-header reveal">
+      <span class="label-section">Direction</span>
+      <h2>Direction Exécutive</h2>
+      <p>Trois co-dirigeants aux profils complémentaires, porteurs d'une vision intercontinentale et d'une exécution locale irréprochable.</p>
+    </div>
+    <div class="direction-grid">
+
+      <div class="member-card reveal reveal-delay-1">
+        <div class="member-photo">
+          <div class="member-initials">IN</div>
+          <div class="member-overlay">
+            <p>Architecte de la stratégie d'ensemble du groupe, Issa N'Diaye apporte plus de 20 ans d'expérience en finance structurée, marchés de capitaux et relations avec les institutions multilatérales africaines et internationales.</p>
+            <a href="#" class="member-linkedin">
+              <svg viewBox="0 0 18 18" fill="currentColor"><path d="M4 6H1v12h3V6zM2.5 4.5A1.5 1.5 0 1 0 1 3a1.5 1.5 0 0 0 1.5 1.5zM17 18h-3v-4.7c0-1.2-.4-2-1.4-2s-1.6.7-1.6 2V18H8V6h3v1.4a3.4 3.4 0 0 1 3-1.7c2 0 3 1.4 3 4V18z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="gold-bar"></div>
+        <div class="member-info">
+          <h3 class="member-name">Issa Mehmet N'Diaye</h3>
+          <span class="member-role">Co-fondateur & Directeur Général</span>
+          <div class="member-tags">
+            <span class="member-tag">Finance structurée</span>
+            <span class="member-tag">Marchés de capitaux</span>
+            <span class="member-tag">Stratégie</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card reveal reveal-delay-2">
+        <div class="member-photo">
+          <div class="member-initials">RM</div>
+          <div class="member-overlay">
+            <p>Spécialiste des financements multilatéraux et des montages PPP complexes, Rym Moulaye-Idriss pilote les relations institutionnelles d'IMAAD et supervise la structuration des transactions majeures, avec une présence terrain en Afrique de l'Ouest et au Moyen-Orient.</p>
+            <a href="#" class="member-linkedin">
+              <svg viewBox="0 0 18 18" fill="currentColor"><path d="M4 6H1v12h3V6zM2.5 4.5A1.5 1.5 0 1 0 1 3a1.5 1.5 0 0 0 1.5 1.5zM17 18h-3v-4.7c0-1.2-.4-2-1.4-2s-1.6.7-1.6 2V18H8V6h3v1.4a3.4 3.4 0 0 1 3-1.7c2 0 3 1.4 3 4V18z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="gold-bar"></div>
+        <div class="member-info">
+          <h3 class="member-name">Rym Moulaye-Idriss</h3>
+          <span class="member-role">Co-fondatrice & Directrice Générale</span>
+          <div class="member-tags">
+            <span class="member-tag">PPP & Infrastructures</span>
+            <span class="member-tag">Relations institutionnelles</span>
+            <span class="member-tag">MENA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card reveal reveal-delay-3">
+        <div class="member-photo">
+          <div class="member-initials">PW</div>
+          <div class="member-overlay">
+            <p>Ancien banquier senior international avec 30 ans d'expérience dans de grandes institutions financières européennes, Pierre Wolf garantit la gouvernance et la rigueur des processus décisionnels du groupe, tout en présidant le Comité d'Investissement.</p>
+            <a href="#" class="member-linkedin">
+              <svg viewBox="0 0 18 18" fill="currentColor"><path d="M4 6H1v12h3V6zM2.5 4.5A1.5 1.5 0 1 0 1 3a1.5 1.5 0 0 0 1.5 1.5zM17 18h-3v-4.7c0-1.2-.4-2-1.4-2s-1.6.7-1.6 2V18H8V6h3v1.4a3.4 3.4 0 0 1 3-1.7c2 0 3 1.4 3 4V18z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="gold-bar"></div>
+        <div class="member-info">
+          <h3 class="member-name">Pierre Wolf</h3>
+          <span class="member-role">Président du Conseil de Gestion</span>
+          <div class="member-tags">
+            <span class="member-tag">Gouvernance</span>
+            <span class="member-tag">Banque d'investissement</span>
+            <span class="member-tag">Europe</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Responsables pays -->
+<section class="responsables">
+  <div class="container">
+    <div class="resp-header reveal">
+      <span class="label-section">Réseau international</span>
+      <h2 style="color:var(--navy);">Présence locale</h2>
+      <p style="color:#666;max-width:500px;margin-top:1rem;">IMAAD Financial Group opère à travers un réseau de bureaux et de représentants dans 8 places financières stratégiques.</p>
+    </div>
+    <div class="resp-grid">
+      <div class="resp-card reveal reveal-delay-1">
+        <span class="resp-flag">🇦🇪</span>
+        <div class="resp-country">Dubaï</div>
+        <div class="resp-city">Bureau principal MENA</div>
+      </div>
+      <div class="resp-card reveal reveal-delay-2">
+        <span class="resp-flag">🇬🇧</span>
+        <div class="resp-country">Londres</div>
+        <div class="resp-city">Hub marchés de capitaux</div>
+      </div>
+      <div class="resp-card reveal reveal-delay-3">
+        <span class="resp-flag">🇨🇮</span>
+        <div class="resp-country">Abidjan</div>
+        <div class="resp-city">Bureau régional Afrique de l'Ouest</div>
+      </div>
+      <div class="resp-card reveal reveal-delay-4">
+        <span class="resp-flag">🇷🇼</span>
+        <div class="resp-country">Kigali</div>
+        <div class="resp-city">Bureau régional Afrique de l'Est</div>
+      </div>
+      <div class="resp-card reveal reveal-delay-1">
+        <span class="resp-flag">🇬🇳</span>
+        <div class="resp-country">Conakry</div>
+        <div class="resp-city">Représentation Guinée & voisinage</div>
+      </div>
+      <div class="resp-card reveal reveal-delay-2">
+        <span class="resp-flag">🇸🇳</span>
+        <div class="resp-country">Dakar</div>
+        <div class="resp-city">Représentation Sénégal & UEMOA</div>
+      </div>
+      <div class="resp-card reveal reveal-delay-3">
+        <span class="resp-flag">🇳🇬</span>
+        <div class="resp-country">Lagos</div>
+        <div class="resp-city">Bureau Nigéria & Afrique Anglophone</div>
+      </div>
+      <div class="resp-card reveal reveal-delay-4">
+        <span class="resp-flag">🇨🇲</span>
+        <div class="resp-country">Yaoundé</div>
+        <div class="resp-city">Représentation CEMAC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Advisory -->
+<section class="advisory">
+  <div class="container">
+    <div class="advisory-header reveal">
+      <span class="label-section">Gouvernance</span>
+      <h2>Conseil Consultatif</h2>
+      <p>Des personnalités de premier plan qui renforcent nos capacités de conseil et notre rayonnement international.</p>
+    </div>
+    <div class="advisory-grid">
+      <div class="advisor-card reveal reveal-delay-1">
+        <h3 class="advisor-name">Expert en droit des financements structurés</h3>
+        <span class="advisor-role">Conseiller Juridique Senior</span>
+        <p class="advisor-bio">Ancien associé d'un cabinet international de premier rang, spécialisé en droit des projets et droit financier des marchés émergents.</p>
+      </div>
+      <div class="advisor-card reveal reveal-delay-2">
+        <h3 class="advisor-name">Ancien haut fonctionnaire – Banque Mondiale</h3>
+        <span class="advisor-role">Conseiller Stratégique</span>
+        <p class="advisor-bio">20 ans d'expérience en développement du secteur privé africain, financement des infrastructures et gouvernance économique.</p>
+      </div>
+      <div class="advisor-card reveal reveal-delay-3">
+        <h3 class="advisor-name">Expert en finance islamique</h3>
+        <span class="advisor-role">Conseiller – Finance & MENA</span>
+        <p class="advisor-bio">Spécialiste reconnu des instruments de finance islamique (sukuk, ijara, mudaraba) pour le financement d'infrastructures en Afrique et au Moyen-Orient.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2025 IMAAD Financial Group. Tous droits réservés.</span>
+      <a href="index.html" style="color:var(--gold);font-family:var(--font-title);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">← Retour à l'accueil</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

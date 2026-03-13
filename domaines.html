@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domaines d'Excellence — IMAAD Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A; --navy-mid: #112844; --navy-light: #1a3556;
+    --gold: #C7A14A; --gold-light: #d9b86a; --gold-dark: #a8853a;
+    --white: #FFFFFF; --off-white: #F8F6F1; --grey-light: #F4F4F4;
+    --grey-mid: #E0DDD6; --grey-text: #8A8A8A; --text-body: #2C2C2C;
+    --font-title: 'Montserrat', sans-serif; --font-body: 'Open Sans', sans-serif;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-soft: 0 8px 40px rgba(11,31,58,0.10);
+    --shadow-card: 0 4px 24px rgba(11,31,58,0.13);
+    --shadow-gold: 0 4px 24px rgba(199,161,74,0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--text-body); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  h1,h2,h3,h4 { font-family: var(--font-title); font-weight: 700; line-height: 1.15; }
+  .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2.5rem; }
+  .label-section { font-family: var(--font-title); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.75rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-title); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 4px; border: none; cursor: pointer; transition: all var(--transition); white-space: nowrap; }
+  .btn-gold { background: var(--gold); color: var(--navy); box-shadow: var(--shadow-gold); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline-gold { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+  .btn-outline-gold:hover { background: var(--gold); color: var(--navy); }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* Header */
+  .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,31,58,0.97); backdrop-filter: blur(12px); padding: 1rem 0; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .logo { display: flex; align-items: center; gap: 1rem; }
+  .logo-name { font-family: var(--font-title); font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12em; color: var(--white); text-transform: uppercase; }
+  .logo-sub { font-family: var(--font-title); font-size: 0.52rem; font-weight: 400; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-top: 2px; display: block; }
+  nav { display: flex; align-items: center; gap: 2.5rem; }
+  nav a { font-family: var(--font-title); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.8); transition: color var(--transition); }
+  nav a:hover, nav a.active { color: var(--white); }
+  nav a.active { color: var(--gold); }
+
+  /* Page Hero */
+  .page-hero { background: linear-gradient(135deg, #060f1c 0%, #0B1F3A 60%, #0d2040 100%); padding: 140px 0 80px; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(199,161,74,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(199,161,74,0.05) 1px, transparent 1px); background-size: 60px 60px; }
+  .page-hero-content { position: relative; z-index: 1; text-align: center; }
+  .page-hero h1 { color: var(--white); font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 1rem; }
+  .page-hero p { color: rgba(255,255,255,0.65); max-width: 580px; margin: 0 auto; font-size: 1rem; line-height: 1.8; }
+  .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .breadcrumb a { font-family: var(--font-title); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); transition: color var(--transition); }
+  .breadcrumb a:hover { color: var(--gold); }
+  .breadcrumb span { color: rgba(199,161,74,0.5); font-size: 0.7rem; }
+  .breadcrumb .current { color: var(--gold); font-family: var(--font-title); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* Services intro */
+  .services-intro { background: var(--off-white); padding: 80px 0; }
+  .services-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+  .service-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    border: 1px solid var(--grey-mid);
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num { font-family: var(--font-title); font-size: 3rem; font-weight: 800; color: rgba(199,161,74,0.08); display: block; margin-bottom: -0.5rem; line-height: 1; }
+  .service-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--gold); }
+  .service-icon svg { width: 30px; height: 30px; }
+  .service-card h3 { color: var(--navy); font-size: 1.15rem; margin-bottom: 1rem; }
+  .service-card p { color: #666; font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .service-features { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+  .service-feature { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.85rem; color: #555; }
+  .feature-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: 8px; flex-shrink: 0; }
+
+  /* Detail sections */
+  .service-detail { padding: 96px 0; }
+  .service-detail:nth-child(even) { background: var(--navy); }
+  .service-detail:nth-child(odd) { background: var(--white); }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .detail-grid.reverse { direction: rtl; }
+  .detail-grid.reverse > * { direction: ltr; }
+  .detail-visual { background: linear-gradient(135deg, var(--navy-light), var(--navy)); border-radius: 12px; padding: 3rem; min-height: 360px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .detail-visual-dark { background: rgba(255,255,255,0.04); border: 1px solid rgba(199,161,74,0.15); }
+  .detail-visual::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(199,161,74,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(199,161,74,0.05) 1px, transparent 1px); background-size: 32px 32px; }
+  .detail-icon-big { position: relative; z-index: 1; color: rgba(199,161,74,0.4); }
+  .detail-icon-big svg { width: 120px; height: 120px; }
+  .detail-text h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 1.25rem; }
+  .detail-text.light h2 { color: var(--white); }
+  .detail-text.dark h2 { color: var(--navy); }
+  .detail-text p { line-height: 1.85; font-size: 0.97rem; margin-bottom: 1.25rem; }
+  .detail-text.light p { color: rgba(255,255,255,0.65); }
+  .detail-text.dark p { color: #555; }
+  .detail-list { display: flex; flex-direction: column; gap: 0.85rem; margin: 1.5rem 0 2rem; }
+  .detail-list-item { display: flex; gap: 1rem; font-size: 0.9rem; }
+  .detail-list-item .icon-wrap { width: 28px; height: 28px; background: rgba(199,161,74,0.12); border: 1px solid rgba(199,161,74,0.25); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold); }
+  .detail-list-item .icon-wrap svg { width: 14px; height: 14px; }
+  .detail-list-item.light span { color: rgba(255,255,255,0.75); }
+  .detail-list-item.dark span { color: #555; }
+
+  /* Footer */
+  .footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 48px 0 0; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; font-size: 0.8rem; color: rgba(255,255,255,0.35); border-top: 1px solid rgba(199,161,74,0.12); }
+
+  @media (max-width: 768px) {
+    .services-cards, .detail-grid { grid-template-columns: 1fr; }
+    .detail-grid.reverse { direction: ltr; }
+    .detail-visual { display: none; }
+    nav { display: none; }
+    .container { padding: 0 1.5rem; }
+    .service-detail { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg width="36" height="36" viewBox="0 0 44 44" fill="none"><rect width="44" height="44" rx="4" fill="rgba(199,161,74,0.08)"/><path d="M22 6 L36 14 L36 30 L22 38 L8 30 L8 14 Z" stroke="#C7A14A" stroke-width="1.2" fill="none"/><circle cx="22" cy="22" r="3" fill="#C7A14A"/></svg>
+        <div><div class="logo-name">IMAAD</div><span class="logo-sub">Financial Group</span></div>
+      </a>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="domaines.html" class="active">Domaines</a>
+        <a href="projets.html">Projets</a>
+        <a href="equipe.html">Équipe</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="btn btn-gold">Nous contacter</a>
+    </div>
+  </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content reveal">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>›</span>
+        <span class="current">Domaines d'Excellence</span>
+      </div>
+      <span class="label-section" style="justify-content:center;display:flex;">Nos expertises</span>
+      <h1>Domaines d'Excellence</h1>
+      <p>Solutions sur-mesure pour États, entreprises et investisseurs à travers trois axes stratégiques complémentaires.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services Cards -->
+<section class="services-intro">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="label-section">Vue d'ensemble</span>
+      <h2 style="color:var(--navy);max-width:600px;margin:0 auto;">Trois expertises au service du développement</h2>
+    </div>
+    <div class="services-cards">
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">01</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 22 L15 5 L25 22 Z"/><path d="M10 22 L10 16 L20 16 L20 22"/><line x1="5" y1="22" x2="25" y2="22"/></svg>
+        </div>
+        <h3>Financement Souverain</h3>
+        <p>Mobilisation de financements concessionnels et structurés pour États et institutions publiques d'Afrique subsaharienne, MENA et Amérique Latine.</p>
+        <div class="service-features">
+          <div class="service-feature"><div class="feature-dot"></div>Restructuration de dette publique</div>
+          <div class="service-feature"><div class="feature-dot"></div>Accès aux marchés de capitaux internationaux</div>
+          <div class="service-feature"><div class="feature-dot"></div>Mobilisation de financements multilatéraux</div>
+          <div class="service-feature"><div class="feature-dot"></div>Appuis budgétaires et garanties souveraines</div>
+        </div>
+        <a href="#souverain" class="btn btn-outline-gold">Voir plus</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">02</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="12" width="10" height="14"/><rect x="16" y="8" width="10" height="18"/><path d="M4 12 L9 4 L14 12"/><path d="M16 8 L21 2 L26 8"/><line x1="2" y1="26" x2="28" y2="26"/></svg>
+        </div>
+        <h3>Partenariats Public-Privé</h3>
+        <p>Conseil, structuration et développement d'infrastructures critiques (transport, énergie, eau, santé) en partenariat entre États et investisseurs privés.</p>
+        <div class="service-features">
+          <div class="service-feature"><div class="feature-dot"></div>Montage juridique et financier des PPP</div>
+          <div class="service-feature"><div class="feature-dot"></div>Identification et sélection des partenaires</div>
+          <div class="service-feature"><div class="feature-dot"></div>Structuration des concessions et BOT</div>
+          <div class="service-feature"><div class="feature-dot"></div>Accompagnement du closing financier</div>
+        </div>
+        <a href="#ppp" class="btn btn-outline-gold">Voir plus</a>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-num">03</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="15" cy="15" r="11"/><path d="M15 8 L15 15 L20 18"/><path d="M10 6 C10 6 6 10 15 10 C24 10 20 6 20 6"/></svg>
+        </div>
+        <h3>Corporate & Trade Finance</h3>
+        <p>Financement CAPEX & OPEX pour entreprises des secteurs industrie, logistique, immobilier et agroalimentaire sur les marchés émergents.</p>
+        <div class="service-features">
+          <div class="service-feature"><div class="feature-dot"></div>Financement de projets industriels</div>
+          <div class="service-feature"><div class="feature-dot"></div>Solutions de trade finance structuré</div>
+          <div class="service-feature"><div class="feature-dot"></div>Accompagnement M&A et acquisitions</div>
+          <div class="service-feature"><div class="feature-dot"></div>Levée de fonds equity et mezzanine</div>
+        </div>
+        <a href="#corporate" class="btn btn-outline-gold">Voir plus</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: Financement Souverain -->
+<section class="service-detail" id="souverain">
+  <div class="container">
+    <div class="detail-grid">
+      <div class="detail-visual reveal">
+        <div class="detail-icon-big">
+          <svg viewBox="0 0 120 120" fill="none" stroke="rgba(199,161,74,0.5)" stroke-width="1"><path d="M20 90 L60 15 L100 90 Z"/><path d="M40 90 L40 62 L80 62 L80 90"/><line x1="20" y1="90" x2="100" y2="90"/><circle cx="60" cy="52" r="10"/></svg>
+        </div>
+      </div>
+      <div class="detail-text dark reveal reveal-delay-2">
+        <span class="label-section">01 — Expertise</span>
+        <h2>Financement Souverain & Concessionnels</h2>
+        <p>IMAAD Financial Group accompagne les États et institutions publiques dans l'accès aux financements les plus adaptés à leurs besoins de développement, en mobilisant des ressources sur les marchés internationaux de capitaux et auprès des bailleurs de fonds multilatéraux.</p>
+        <p>Notre expertise couvre l'ensemble du cycle de vie : de l'identification du besoin à la clôture financière, en passant par la structuration juridique et la négociation avec les investisseurs.</p>
+        <div class="detail-list">
+          <div class="detail-list-item dark">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Mobilisation de prêts concessionnels (BAD, BEI, AFD, IDA)</span>
+          </div>
+          <div class="detail-list-item dark">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Restructuration et rééchelonnement de dettes souveraines</span>
+          </div>
+          <div class="detail-list-item dark">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Émissions obligataires sur les marchés internationaux (Eurobonds)</span>
+          </div>
+          <div class="detail-list-item dark">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Mécanismes de garanties et appuis budgétaires</span>
+          </div>
+        </div>
+        <a href="index.html#contact" class="btn btn-gold">Soumettre un projet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: PPP -->
+<section class="service-detail" id="ppp">
+  <div class="container">
+    <div class="detail-grid reverse">
+      <div class="detail-visual detail-visual-dark reveal">
+        <div class="detail-icon-big">
+          <svg viewBox="0 0 120 120" fill="none" stroke="rgba(199,161,74,0.4)" stroke-width="1"><rect x="15" y="50" width="38" height="55"/><rect x="67" y="35" width="38" height="70"/><path d="M15 50 L34 18 L53 50"/><path d="M67 35 L86 5 L105 35"/><line x1="8" y1="105" x2="112" y2="105"/></svg>
+        </div>
+      </div>
+      <div class="detail-text light reveal reveal-delay-2">
+        <span class="label-section">02 — Expertise</span>
+        <h2 style="color:var(--white);">Partenariats Public-Privé (PPP)</h2>
+        <p>Notre équipe maîtrise l'ensemble des modèles de partenariat public-privé : concessions, BOT (Build-Operate-Transfer), BOOT, affermages. Nous intervenons dès la phase de préfaisabilité jusqu'au closing financier.</p>
+        <p>Nous avons closé plus de 20 transactions PPP dans les secteurs des transports, de l'eau, de l'énergie et de la santé, pour un volume cumulé supérieur à 800 M€.</p>
+        <div class="detail-list">
+          <div class="detail-list-item light">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Routes, autoroutes et infrastructures de transport</span>
+          </div>
+          <div class="detail-list-item light">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none duke stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Réseaux d'eau potable et assainissement</span>
+          </div>
+          <div class="detail-list-item light">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Production et distribution d'énergie</span>
+          </div>
+          <div class="detail-list-item light">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Infrastructures hospitalières et éducatives</span>
+          </div>
+        </div>
+        <a href="index.html#contact" class="btn btn-gold">Soumettre un projet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: Corporate -->
+<section class="service-detail" id="corporate">
+  <div class="container">
+    <div class="detail-grid">
+      <div class="detail-visual reveal">
+        <div class="detail-icon-big">
+          <svg viewBox="0 0 120 120" fill="none" stroke="rgba(199,161,74,0.5)" stroke-width="1"><circle cx="60" cy="60" r="50"/><path d="M60 30 L60 60 L82 72"/><path d="M38 22 C38 22 22 38 60 38 C98 38 82 22 82 22"/><ellipse cx="60" cy="60" rx="30" ry="50"/></svg>
+        </div>
+      </div>
+      <div class="detail-text dark reveal reveal-delay-2">
+        <span class="label-section">03 — Expertise</span>
+        <h2>Corporate & Trade Finance</h2>
+        <p>IMAAD Financial Group accompagne les entreprises dans leur développement sur les marchés émergents en structurant des solutions de financement adaptées à leurs cycles d'investissement et d'exploitation.</p>
+        <p>Nos solutions couvrent l'ensemble des besoins : financement de projets industriels, solutions de trade finance, accompagnement d'opérations M&A et levées de fonds.</p>
+        <div class="detail-list">
+          <div class="detail-list-item dark">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Financement de projets industriels et logistiques</span>
+          </div>
+          <div class="detail-list-item dark">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Lettres de crédit, garanties bancaires et trade finance</span>
+          </div>
+          <div class="detail-list-item dark">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>M&A advisory et structuration d'acquisitions</span>
+          </div>
+          <div class="detail-list-item dark">
+            <div class="icon-wrap"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7 L5 10 L12 3"/></svg></div>
+            <span>Private equity et financement mezzanine</span>
+          </div>
+        </div>
+        <a href="index.html#contact" class="btn btn-gold">Soumettre un projet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2025 IMAAD Financial Group. Tous droits réservés.</span>
+      <a href="index.html" style="color:var(--gold);font-family:var(--font-title);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">← Retour à l'accueil</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

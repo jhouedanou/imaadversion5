@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets & Impact — IMAAD Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A; --navy-mid: #112844; --navy-light: #1a3556;
+    --gold: #C7A14A; --gold-light: #d9b86a; --gold-dark: #a8853a;
+    --white: #FFFFFF; --off-white: #F8F6F1;
+    --grey-mid: #E0DDD6; --grey-text: #8A8A8A; --text-body: #2C2C2C;
+    --font-title: 'Montserrat', sans-serif; --font-body: 'Open Sans', sans-serif;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-soft: 0 8px 40px rgba(11,31,58,0.10);
+    --shadow-card: 0 4px 24px rgba(11,31,58,0.13);
+    --shadow-gold: 0 4px 24px rgba(199,161,74,0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--text-body); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  h1,h2,h3,h4 { font-family: var(--font-title); font-weight: 700; line-height: 1.15; }
+  .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2.5rem; }
+  .label-section { font-family: var(--font-title); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.75rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-title); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 4px; border: none; cursor: pointer; transition: all var(--transition); }
+  .btn-gold { background: var(--gold); color: var(--navy); box-shadow: var(--shadow-gold); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; } .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* Header */
+  .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,31,58,0.97); backdrop-filter: blur(12px); padding: 1rem 0; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .logo { display: flex; align-items: center; gap: 1rem; }
+  .logo-name { font-family: var(--font-title); font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12em; color: var(--white); text-transform: uppercase; }
+  .logo-sub { font-family: var(--font-title); font-size: 0.52rem; font-weight: 400; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-top: 2px; display: block; }
+  nav { display: flex; align-items: center; gap: 2.5rem; }
+  nav a { font-family: var(--font-title); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.8); transition: color var(--transition); }
+  nav a:hover { color: var(--white); }
+  nav a.active { color: var(--gold); }
+
+  /* Page Hero */
+  .page-hero { background: linear-gradient(135deg, #060f1c 0%, #0B1F3A 60%); padding: 140px 0 80px; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(199,161,74,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(199,161,74,0.05) 1px, transparent 1px); background-size: 60px 60px; }
+  .page-hero-content { position: relative; z-index: 1; text-align: center; }
+  .page-hero h1 { color: var(--white); font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 1rem; }
+  .page-hero p { color: rgba(255,255,255,0.65); max-width: 580px; margin: 0 auto; font-size: 1rem; line-height: 1.8; }
+  .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .breadcrumb a { font-family: var(--font-title); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); transition: color var(--transition); }
+  .breadcrumb span { color: rgba(199,161,74,0.5); font-size: 0.7rem; }
+  .breadcrumb .current { color: var(--gold); font-family: var(--font-title); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* Stats banner */
+  .stats-banner { background: var(--gold); padding: 2.5rem 0; }
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(0,0,0,0.1); }
+  .stat-item { text-align: center; padding: 1.5rem; background: var(--gold); }
+  .stat-num { font-family: var(--font-title); font-size: 2.2rem; font-weight: 800; color: var(--navy); display: block; line-height: 1; }
+  .stat-label { font-family: var(--font-title); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(11,31,58,0.7); margin-top: 0.3rem; display: block; }
+
+  /* Filter Bar */
+  .filter-bar { background: var(--off-white); padding: 1.5rem 0; border-bottom: 1px solid var(--grey-mid); }
+  .filter-inner { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .filter-label { font-family: var(--font-title); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); }
+  .filter-btn { font-family: var(--font-title); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.5rem 1.25rem; border-radius: 20px; border: 1.5px solid var(--grey-mid); background: var(--white); color: #666; cursor: pointer; transition: all var(--transition); }
+  .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--navy); background: rgba(199,161,74,0.08); }
+
+  /* Projects Grid */
+  .projects-section { padding: 80px 0; background: var(--white); }
+  .projects-header { margin-bottom: 3rem; }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .project-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--grey-mid);
+    transition: all var(--transition);
+    background: var(--white);
+  }
+  .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); border-color: rgba(199,161,74,0.3); }
+  .project-header {
+    height: 180px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+    overflow: hidden;
+  }
+  .ph-1 { background: linear-gradient(135deg, #0e2a4a, #1a3a5c); }
+  .ph-2 { background: linear-gradient(135deg, #0a1e33, #122a45); }
+  .ph-3 { background: linear-gradient(135deg, #0d2540, #152f52); }
+  .ph-4 { background: linear-gradient(135deg, #081828, #102238); }
+  .ph-5 { background: linear-gradient(135deg, #0f2840, #1c3855); }
+  .ph-6 { background: linear-gradient(135deg, #0b2035, #162c48); }
+  .project-header::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(199,161,74,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(199,161,74,0.06) 1px, transparent 1px); background-size: 28px 28px; }
+  .project-tags { display: flex; gap: 0.5rem; position: relative; z-index: 1; flex-wrap: wrap; }
+  .tag-pays { font-family: var(--font-title); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(11,31,58,0.6); backdrop-filter: blur(6px); border: 1px solid rgba(199,161,74,0.3); padding: 0.3rem 0.6rem; border-radius: 3px; color: rgba(255,255,255,0.9); }
+  .tag-statut { font-family: var(--font-title); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.6rem; border-radius: 3px; }
+  .tag-close { background: rgba(199,161,74,0.2); color: var(--gold); border: 1px solid rgba(199,161,74,0.4); }
+  .tag-progress { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .tag-pipeline { background: rgba(99,102,241,0.2); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); }
+  .project-montant { font-family: var(--font-title); font-size: 2rem; font-weight: 800; color: rgba(199,161,74,0.8); position: relative; z-index: 1; }
+  .project-body { padding: 1.5rem; }
+  .project-body h3 { color: var(--navy); font-size: 1rem; margin-bottom: 0.5rem; }
+  .project-sector { font-family: var(--font-title); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: block; }
+  .project-desc { font-size: 0.85rem; color: #777; line-height: 1.65; margin-bottom: 1.25rem; }
+  .project-meta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .meta-item { font-family: var(--font-title); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #999; display: flex; align-items: center; gap: 0.35rem; }
+  .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+
+  /* Portfolio Overview */
+  .portfolio-overview { background: var(--navy); padding: 80px 0; }
+  .portfolio-header { text-align: center; margin-bottom: 4rem; }
+  .portfolio-header h2 { color: var(--white); }
+  .portfolio-header p { color: rgba(255,255,255,0.6); max-width: 500px; margin: 1rem auto 0; }
+  .portfolio-bars { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+  .bar-item { }
+  .bar-header { display: flex; justify-content: space-between; margin-bottom: 0.6rem; }
+  .bar-label { font-family: var(--font-title); font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+  .bar-value { font-family: var(--font-title); font-size: 0.8rem; font-weight: 700; color: var(--gold); }
+  .bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); border-radius: 4px; transform-origin: left; transform: scaleX(0); transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+  .bar-fill.animated { transform: scaleX(1); }
+
+  /* Footer */
+  .footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 48px 0 0; }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; font-size: 0.8rem; color: rgba(255,255,255,0.35); border-top: 1px solid rgba(199,161,74,0.12); }
+
+  @media (max-width: 768px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    nav { display: none; }
+    .container { padding: 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg width="36" height="36" viewBox="0 0 44 44" fill="none"><rect width="44" height="44" rx="4" fill="rgba(199,161,74,0.08)"/><path d="M22 6 L36 14 L36 30 L22 38 L8 30 L8 14 Z" stroke="#C7A14A" stroke-width="1.2" fill="none"/><circle cx="22" cy="22" r="3" fill="#C7A14A"/></svg>
+        <div><div class="logo-name">IMAAD</div><span class="logo-sub">Financial Group</span></div>
+      </a>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="domaines.html">Domaines</a>
+        <a href="projets.html" class="active">Projets</a>
+        <a href="equipe.html">Équipe</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="btn btn-gold">Nous contacter</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-content reveal">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>›</span>
+        <span class="current">Projets & Impact</span>
+      </div>
+      <span class="label-section" style="justify-content:center;display:flex;">Réalisations</span>
+      <h1>Projets & Impact</h1>
+      <p>Des résultats mesurables dans des secteurs critiques — un portefeuille de transactions qui traduit notre engagement pour le développement durable de l'Afrique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-banner">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item reveal reveal-delay-1"><span class="stat-num">+1 Md €</span><span class="stat-label">Volume mobilisé</span></div>
+      <div class="stat-item reveal reveal-delay-2"><span class="stat-num">+20</span><span class="stat-label">Transactions closées</span></div>
+      <div class="stat-item reveal reveal-delay-3"><span class="stat-num">15+</span><span class="stat-label">Pays couverts</span></div>
+      <div class="stat-item reveal reveal-delay-4"><span class="stat-num">5</span><span class="stat-label">Secteurs clés</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Filter -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-inner">
+      <span class="filter-label">Filtrer par :</span>
+      <button class="filter-btn active" onclick="filterProjects('all', this)">Tous</button>
+      <button class="filter-btn" onclick="filterProjects('souverain', this)">Financement Souverain</button>
+      <button class="filter-btn" onclick="filterProjects('ppp', this)">PPP</button>
+      <button class="filter-btn" onclick="filterProjects('corporate', this)">Corporate</button>
+      <button class="filter-btn" onclick="filterProjects('energie', this)">Énergie</button>
+      <button class="filter-btn" onclick="filterProjects('eau', this)">Eau & Infrastructures</button>
+    </div>
+  </div>
+</div>
+
+<!-- Projects -->
+<section class="projects-section">
+  <div class="container">
+    <div class="projects-header reveal">
+      <span class="label-section">Notre portefeuille</span>
+      <h2 style="color:var(--navy);">Transactions de référence</h2>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+
+      <div class="project-card reveal reveal-delay-1" data-category="ppp transport">
+        <div class="project-header ph-1">
+          <div class="project-tags">
+            <span class="tag-pays">🇨🇮 Côte d'Ivoire</span>
+            <span class="tag-statut tag-close">Closé 2023</span>
+          </div>
+          <div class="project-montant">150 M€</div>
+        </div>
+        <div class="project-body">
+          <h3>Route Abidjan – San Pédro</h3>
+          <span class="project-sector">PPP — Transport routier</span>
+          <p class="project-desc">Structuration et closing du financement d'un corridor routier stratégique reliant Abidjan au port de San Pédro, facilitant l'accès aux zones de production agricole.</p>
+          <div class="project-meta">
+            <span class="meta-item"><span class="meta-dot"></span>2022–2023</span>
+            <span class="meta-item"><span class="meta-dot"></span>BOT 25 ans</span>
+            <span class="meta-item"><span class="meta-dot"></span>BAD + privé</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2" data-category="ppp eau">
+        <div class="project-header ph-2">
+          <div class="project-tags">
+            <span class="tag-pays">🇨🇮 Côte d'Ivoire</span>
+            <span class="tag-statut tag-progress">Closing 2026</span>
+          </div>
+          <div class="project-montant">278 M€</div>
+        </div>
+        <div class="project-body">
+          <h3>Adduction d'eau Grand-Abidjan</h3>
+          <span class="project-sector">PPP — Eau & assainissement</span>
+          <p class="project-desc">Extension du réseau d'eau potable pour 4,5 millions d'habitants de la métropole abidjanaise. Financement structuré avec garanties gouvernementales et soutien multilatéral.</p>
+          <div class="project-meta">
+            <span class="meta-item"><span class="meta-dot"></span>2024–2026</span>
+            <span class="meta-item"><span class="meta-dot"></span>BOOT 30 ans</span>
+            <span class="meta-item"><span class="meta-dot"></span>IDA + BEI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-3" data-category="corporate energie">
+        <div class="project-header ph-3">
+          <div class="project-tags">
+            <span class="tag-pays">🇳🇬 Nigéria</span>
+            <span class="tag-statut tag-close">Closé 2026</span>
+          </div>
+          <div class="project-montant">500 M€</div>
+        </div>
+        <div class="project-body">
+          <h3>Renforcement Réseau Gaz</h3>
+          <span class="project-sector">Corporate — Énergie</span>
+          <p class="project-desc">Structuration du financement pour le renforcement et l'extension du réseau de distribution de gaz naturel au Nigéria, sécurisant l'approvisionnement de 3 États fédérés.</p>
+          <div class="project-meta">
+            <span class="meta-item"><span class="meta-dot"></span>2024–2026</span>
+            <span class="meta-item"><span class="meta-dot"></span>CAPEX industriel</span>
+            <span class="meta-item"><span class="meta-dot"></span>Club deal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1" data-category="souverain">
+        <div class="project-header ph-4">
+          <div class="project-tags">
+            <span class="tag-pays">🇸🇳 Sénégal</span>
+            <span class="tag-statut tag-close">Closé 2022</span>
+          </div>
+          <div class="project-montant">85 M€</div>
+        </div>
+        <div class="project-body">
+          <h3>Programme Appui Budgétaire</h3>
+          <span class="project-sector">Souverain — Finances publiques</span>
+          <p class="project-desc">Mobilisation d'un financement concessionnel auprès de bailleurs bilatéraux pour le soutien budgétaire post-Covid et le renforcement des réserves de change.</p>
+          <div class="project-meta">
+            <span class="meta-item"><span class="meta-dot"></span>2021–2022</span>
+            <span class="meta-item"><span class="meta-dot"></span>Prêt concessionnel</span>
+            <span class="meta-item"><span class="meta-dot"></span>AFD + KfW</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2" data-category="ppp energie">
+        <div class="project-header ph-5">
+          <div class="project-tags">
+            <span class="tag-pays">🇬🇳 Guinée</span>
+            <span class="tag-statut tag-pipeline">En cours</span>
+          </div>
+          <div class="project-montant">340 M€</div>
+        </div>
+        <div class="project-body">
+          <h3>Centrale Solaire Conakry</h3>
+          <span class="project-sector">PPP — Énergie renouvelable</span>
+          <p class="project-desc">Développement et financement d'une centrale solaire hybride de 150 MW en PPP avec l'État guinéen, dans le cadre de la stratégie nationale d'électrification.</p>
+          <div class="project-meta">
+            <span class="meta-item"><span class="meta-dot"></span>2025–2027</span>
+            <span class="meta-item"><span class="meta-dot"></span>IPP solaire</span>
+            <span class="meta-item"><span class="meta-dot"></span>IFC + privé</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-3" data-category="corporate">
+        <div class="project-header ph-6">
+          <div class="project-tags">
+            <span class="tag-pays">🇷🇼 Rwanda</span>
+            <span class="tag-statut tag-close">Closé 2024</span>
+          </div>
+          <div class="project-montant">62 M€</div>
+        </div>
+        <div class="project-body">
+          <h3>Plateforme Logistique Kigali</h3>
+          <span class="project-sector">Corporate — Logistique & Immobilier</span>
+          <p class="project-desc">Financement de la construction et de l'équipement d'une plateforme logistique multimodale à Kigali, hub régional pour l'Afrique de l'Est.</p>
+          <div class="project-meta">
+            <span class="meta-item"><span class="meta-dot"></span>2023–2024</span>
+            <span class="meta-item"><span class="meta-dot"></span>CAPEX + mezzanine</span>
+            <span class="meta-item"><span class="meta-dot"></span>Private equity</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio bars -->
+<section class="portfolio-overview">
+  <div class="container">
+    <div class="portfolio-header reveal">
+      <span class="label-section">Répartition du portefeuille</span>
+      <h2>Portefeuille global</h2>
+      <p>Distribution sectorielle des transactions structurées et financées depuis 2020.</p>
+    </div>
+    <div class="portfolio-bars" id="portfolioBars">
+      <div class="bar-item reveal reveal-delay-1">
+        <div class="bar-header"><span class="bar-label">Infrastructures & Transport (PPP)</span><span class="bar-value">42%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:42%"></div></div>
+      </div>
+      <div class="bar-item reveal reveal-delay-2">
+        <div class="bar-header"><span class="bar-label">Énergie & Transition énergétique</span><span class="bar-value">28%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:28%"></div></div>
+      </div>
+      <div class="bar-item reveal reveal-delay-3">
+        <div class="bar-header"><span class="bar-label">Eau & Assainissement</span><span class="bar-value">18%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:18%"></div></div>
+      </div>
+      <div class="bar-item reveal reveal-delay-4">
+        <div class="bar-header"><span class="bar-label">Financement souverain & budgétaire</span><span class="bar-value">12%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:12%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2025 IMAAD Financial Group. Tous droits réservés.</span>
+      <a href="index.html" style="color:var(--gold);font-family:var(--font-title);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;">← Retour à l'accueil</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Bar animation
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.bar-fill').forEach(bar => bar.classList.add('animated'));
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  const pbars = document.getElementById('portfolioBars');
+  if (pbars) barObserver.observe(pbars);
+
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.category.includes(cat)) ? 'block' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

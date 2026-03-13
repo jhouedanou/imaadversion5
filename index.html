@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMAAD Financial Group — Catalyseur de la souveraineté et de la croissance durable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  /* ===========================
+     DESIGN TOKENS & ROOT
+  =========================== */
+  :root {
+    --navy: #0B1F3A;
+    --navy-mid: #112844;
+    --navy-light: #1a3556;
+    --gold: #C7A14A;
+    --gold-light: #d9b86a;
+    --gold-dark: #a8853a;
+    --white: #FFFFFF;
+    --off-white: #F8F6F1;
+    --grey-light: #F4F4F4;
+    --grey-mid: #E0DDD6;
+    --grey-text: #8A8A8A;
+    --text-body: #2C2C2C;
+
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --font-serif: 'Cormorant Garamond', serif;
+
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-soft: 0 8px 40px rgba(11,31,58,0.10);
+    --shadow-card: 0 4px 24px rgba(11,31,58,0.13);
+    --shadow-gold: 0 4px 24px rgba(199,161,74,0.25);
+  }
+
+  /* ===========================
+     RESET & BASE
+  =========================== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text-body);
+    background: var(--white);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ===========================
+     TYPOGRAPHY
+  =========================== */
+  h1, h2, h3, h4 { font-family: var(--font-title); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.2rem, 5vw, 4rem); }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); }
+  h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; }
+  p { font-size: 1rem; color: var(--text-body); }
+
+  .label-section {
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .text-gold { color: var(--gold); }
+  .text-white { color: var(--white); }
+  .text-navy { color: var(--navy); }
+
+  /* ===========================
+     BUTTONS
+  =========================== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-title);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+    box-shadow: var(--shadow-gold);
+  }
+  .btn-gold:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(199,161,74,0.38);
+  }
+  .btn-outline-white {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.5);
+  }
+  .btn-outline-white:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--white);
+  }
+  .btn-outline-gold {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+  }
+  .btn-outline-gold:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  /* ===========================
+     LAYOUT UTILITIES
+  =========================== */
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+  .section-pad { padding: 96px 0; }
+  .section-pad-sm { padding: 64px 0; }
+  .section-pad-lg { padding: 120px 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .flex-center { display: flex; align-items: center; justify-content: center; }
+  .flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+  /* ===========================
+     HEADER / NAVIGATION
+  =========================== */
+  .header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    transition: all var(--transition);
+    padding: 1.25rem 0;
+  }
+  .header.scrolled {
+    background: rgba(11,31,58,0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.25);
+    padding: 0.85rem 0;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    position: relative;
+  }
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-name {
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .logo-sub {
+    font-family: var(--font-title);
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  nav { display: flex; align-items: center; gap: 2.5rem; }
+  nav a {
+    font-family: var(--font-title);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    transition: color var(--transition);
+    position: relative;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+  }
+  nav a:hover { color: var(--white); }
+  nav a:hover::after { transform: scaleX(1); }
+  .nav-cta { margin-left: 1rem; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--white); transition: all var(--transition); }
+
+  /* ===========================
+     HERO SECTION
+  =========================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 80px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(125deg, #060f1c 0%, #0B1F3A 40%, #112844 70%, #0e2040 100%);
+  }
+  /* Geometric overlay */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 75% 30%, rgba(199,161,74,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(17,40,68,0.8) 0%, transparent 70%);
+  }
+  /* Grid pattern */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(199,161,74,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(199,161,74,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.3) 0%, transparent 60%);
+  }
+  /* Decorative arc */
+  .hero-arc {
+    position: absolute;
+    right: -5%;
+    top: 10%;
+    width: 55%;
+    height: 80%;
+    border: 1px solid rgba(199,161,74,0.12);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    transform: rotate(15deg);
+  }
+  .hero-arc::before {
+    content: '';
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgba(199,161,74,0.07);
+    border-radius: inherit;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+  }
+  .hero-pretitle {
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-pretitle::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+  .hero h1 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.08;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .hero-desc {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.72);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    border-top: 1px solid rgba(199,161,74,0.2);
+    padding-top: 2.5rem;
+  }
+  .hero-stat {}
+  .hero-stat-num {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    font-family: var(--font-title);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-top: 0.3rem;
+    display: block;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+    animation: scrollBounce 2.5s ease-in-out infinite;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .hero-scroll-text {
+    font-family: var(--font-title);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* Quick Contact Overlay */
+  .hero-contact-card {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(199,161,74,0.2);
+    border-radius: 8px;
+    padding: 2rem;
+    width: 280px;
+  }
+  .hero-contact-card h4 {
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .hero-contact-card input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    transition: border-color var(--transition);
+    outline: none;
+  }
+  .hero-contact-card input::placeholder { color: rgba(255,255,255,0.35); }
+  .hero-contact-card input:focus { border-color: var(--gold); }
+  .hero-contact-card .btn { width: 100%; justify-content: center; }
+
+  /* ===========================
+     SECTION: VALEURS
+  =========================== */
+  .valeurs { background: var(--off-white); }
+  .valeurs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--grey-mid);
+    border: 1px solid var(--grey-mid);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+  .valeur-card {
+    background: var(--white);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: all var(--transition);
+  }
+  .valeur-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+  }
+  .valeur-card:hover::before { transform: scaleX(1); }
+  .valeur-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: transform var(--transition);
+  }
+  .valeur-card:hover .valeur-icon { transform: scale(1.08) rotate(-3deg); }
+  .valeur-icon svg { width: 28px; height: 28px; color: var(--gold); }
+  .valeur-card h3 { color: var(--navy); margin-bottom: 0.75rem; }
+  .valeur-card p { font-size: 0.92rem; color: #666; line-height: 1.75; }
+
+  /* ===========================
+     SECTION INTRO / MODEL
+  =========================== */
+  .model-section { background: var(--white); }
+  .model-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .model-visual {
+    position: relative;
+  }
+  .model-visual-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-radius: 12px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .model-visual-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(199,161,74,0.06) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(199,161,74,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .model-visual-inner {
+    position: relative;
+    text-align: center;
+  }
+  .model-globe {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px solid rgba(199,161,74,0.3);
+    position: relative;
+    margin: 0 auto 1.5rem;
+    animation: rotateSlow 20s linear infinite;
+  }
+  .model-globe::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(199,161,74,0.2);
+  }
+  .model-globe::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: -10%;
+    width: 120%;
+    height: 1px;
+    background: rgba(199,161,74,0.2);
+  }
+  @keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .model-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    font-family: var(--font-title);
+    font-weight: 800;
+    box-shadow: var(--shadow-gold);
+  }
+  .model-badge-num { font-size: 2rem; display: block; line-height: 1; }
+  .model-badge-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .model-text h2 { color: var(--navy); margin-bottom: 1.5rem; }
+  .model-text p { color: #555; line-height: 1.85; margin-bottom: 1.5rem; font-size: 0.98rem; }
+  .model-pillars { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-left: 2px solid transparent;
+    transition: all var(--transition);
+    border-radius: 0 6px 6px 0;
+  }
+  .pillar:hover {
+    border-left-color: var(--gold);
+    background: var(--off-white);
+  }
+  .pillar-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .pillar h4 {
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .pillar p { font-size: 0.85rem; color: #777; margin: 0; }
+
+  /* ===========================
+     SECTION: DOMAINES D'EXCELLENCE
+  =========================== */
+  .domaines { background: var(--navy); position: relative; overflow: hidden; }
+  .domaines::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(199,161,74,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(199,161,74,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .domaines-header { text-align: center; margin-bottom: 4rem; position: relative; }
+  .domaines-header h2 { color: var(--white); }
+  .domaines-header p { color: rgba(255,255,255,0.6); max-width: 520px; margin: 1rem auto 0; font-size: 0.98rem; }
+  .domaines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    position: relative;
+  }
+  .domaine-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(199,161,74,0.15);
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .domaine-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+  .domaine-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(199,161,74,0.35);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(199,161,74,0.2);
+  }
+  .domaine-card:hover::before { transform: scaleX(1); }
+  .domaine-num {
+    font-family: var(--font-title);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: rgba(199,161,74,0.4);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .domaine-icon {
+    margin-bottom: 1.5rem;
+    color: var(--gold);
+  }
+  .domaine-icon svg { width: 40px; height: 40px; }
+  .domaine-card h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 1rem; }
+  .domaine-card p { color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.75rem; }
+  .domaine-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: gap var(--transition);
+  }
+  .domaine-link:hover { gap: 0.85rem; }
+  .domaine-link svg { width: 14px; height: 14px; }
+
+  /* ===========================
+     SECTION: INDICATEURS
+  =========================== */
+  .indicateurs { background: var(--off-white); }
+  .indicateurs-header { text-align: center; margin-bottom: 4rem; }
+  .indicateurs-header h2 { color: var(--navy); }
+  .indicateurs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--grey-mid);
+    border: 1px solid var(--grey-mid);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .indicateur {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: background var(--transition);
+    position: relative;
+  }
+  .indicateur:hover { background: var(--navy); }
+  .indicateur-num {
+    font-family: var(--font-title);
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .indicateur-label {
+    font-family: var(--font-title);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    transition: color var(--transition);
+  }
+  .indicateur:hover .indicateur-label { color: rgba(255,255,255,0.7); }
+  .indicateur-sub {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--grey-text);
+    margin-top: 0.35rem;
+    transition: color var(--transition);
+  }
+  .indicateur:hover .indicateur-sub { color: rgba(255,255,255,0.45); }
+
+  /* ===========================
+     SECTION: PROJETS PHARES
+  =========================== */
+  .projets-phares { background: var(--white); }
+  .projets-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+  }
+  .projets-header h2 { color: var(--navy); }
+  .projets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .projet-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--grey-mid);
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+  .projet-card:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-4px);
+  }
+  .projet-img {
+    height: 200px;
+    background: linear-gradient(135deg, var(--navy-light), var(--navy));
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+  .projet-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(199,161,74,0.06) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(199,161,74,0.06) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  .projet-img-1 { background: linear-gradient(135deg, #0e2a4a, #1a3a5c); }
+  .projet-img-2 { background: linear-gradient(135deg, #0a1e33, #122a45); }
+  .projet-img-3 { background: linear-gradient(135deg, #0d2540, #152f52); }
+  .projet-badge {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .projet-pays {
+    font-family: var(--font-title);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    background: rgba(11,31,58,0.6);
+    backdrop-filter: blur(8px);
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+    border: 1px solid rgba(199,161,74,0.3);
+  }
+  .projet-statut {
+    font-family: var(--font-title);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+  }
+  .statut-close { background: rgba(199,161,74,0.2); color: var(--gold); border: 1px solid rgba(199,161,74,0.4); }
+  .statut-progress { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .projet-body { padding: 1.5rem; }
+  .projet-body h3 { color: var(--navy); font-size: 1rem; margin-bottom: 0.5rem; }
+  .projet-montant {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .projet-desc { font-size: 0.85rem; color: #777; line-height: 1.6; }
+
+  /* ===========================
+     SECTION: IMPACT / CARTE
+  =========================== */
+  .impact { background: var(--navy); position: relative; overflow: hidden; }
+  .impact::before {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(199,161,74,0.08);
+  }
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .impact-text h2 { color: var(--white); margin-bottom: 1.5rem; }
+  .impact-text p { color: rgba(255,255,255,0.65); line-height: 1.85; font-size: 0.98rem; margin-bottom: 2rem; }
+  .impact-list { display: flex; flex-direction: column; gap: 1rem; }
+  .impact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.92rem;
+  }
+  .impact-check {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(199,161,74,0.15);
+    border: 1px solid rgba(199,161,74,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+  .impact-check svg { width: 12px; height: 12px; }
+  .impact-map {
+    position: relative;
+  }
+  .map-container {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(199,161,74,0.15);
+    border-radius: 12px;
+    padding: 2rem;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* SVG Africa Map placeholder */
+  .africa-svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+  }
+  .map-pin {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(199,161,74,0.2);
+    animation: pulse 2s ease-in-out infinite;
+    cursor: pointer;
+  }
+  .map-pin::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-family: var(--font-title);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--navy);
+    background: var(--gold);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .map-pin:hover::after { opacity: 1; }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(199,161,74,0.2); }
+    50% { box-shadow: 0 0 0 8px rgba(199,161,74,0.08); }
+  }
+  .impact-countries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .country-tag {
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.6);
+    padding: 0.4rem 0.75rem;
+    border: 1px solid rgba(199,161,74,0.15);
+    border-radius: 4px;
+    text-align: center;
+    transition: all var(--transition);
+  }
+  .country-tag:hover {
+    border-color: rgba(199,161,74,0.4);
+    color: var(--gold);
+    background: rgba(199,161,74,0.05);
+  }
+
+  /* ===========================
+     SECTION: EQUIPE
+  =========================== */
+  .equipe { background: var(--off-white); }
+  .equipe-header { text-align: center; margin-bottom: 4rem; }
+  .equipe-header h2 { color: var(--navy); }
+  .equipe-header p { color: #666; max-width: 500px; margin: 1rem auto 0; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .team-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition);
+    position: relative;
+  }
+  .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+  .team-photo {
+    height: 240px;
+    background: linear-gradient(135deg, var(--navy-light), var(--navy));
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .team-photo-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(199,161,74,0.15);
+    border: 2px solid rgba(199,161,74,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(199,161,74,0.6);
+  }
+  .team-photo-placeholder svg { width: 36px; height: 36px; }
+  /* Hover overlay */
+  .team-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11,31,58,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .team-card:hover .team-overlay { opacity: 1; }
+  .team-linkedin {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    transition: all var(--transition);
+  }
+  .team-linkedin:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .team-linkedin svg { width: 18px; height: 18px; }
+  .team-gold-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  }
+  .team-info { padding: 1.5rem; }
+  .team-name { font-size: 1rem; color: var(--navy); margin-bottom: 0.3rem; }
+  .team-role {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-family: var(--font-title);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .team-bio { font-size: 0.85rem; color: #777; line-height: 1.65; }
+
+  /* ===========================
+     SECTION: CONTACT
+  =========================== */
+  .contact { background: var(--white); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-info h2 { color: var(--navy); margin-bottom: 1rem; }
+  .contact-info > p { color: #666; line-height: 1.8; margin-bottom: 2.5rem; font-size: 0.98rem; }
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--off-white);
+    border: 1px solid var(--grey-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+  .contact-icon svg { width: 18px; height: 18px; }
+  .contact-detail-label {
+    font-family: var(--font-title);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-text);
+    margin-bottom: 0.2rem;
+    display: block;
+  }
+  .contact-detail-value { font-size: 0.92rem; color: var(--navy); }
+  .offices-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .office-tag {
+    font-size: 0.82rem;
+    color: #666;
+    padding: 0.5rem 0.75rem;
+    background: var(--off-white);
+    border-radius: 4px;
+    border: 1px solid var(--grey-mid);
+    text-align: center;
+    transition: all var(--transition);
+  }
+  .office-tag:hover { border-color: var(--gold); color: var(--navy); }
+
+  .contact-form {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    border: 1px solid var(--grey-mid);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid var(--grey-mid);
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--text-body);
+    background: var(--white);
+    transition: border-color var(--transition);
+    outline: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .form-submit { margin-top: 1.5rem; }
+  .form-submit .btn { width: 100%; justify-content: center; }
+  .form-success {
+    display: none;
+    background: rgba(199,161,74,0.1);
+    border: 1px solid rgba(199,161,74,0.3);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: var(--navy);
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  /* ===========================
+     FOOTER
+  =========================== */
+  .footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 64px 0 0; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(199,161,74,0.12);
+  }
+  .footer-brand h3 {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .footer-brand .tagline {
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-style: italic;
+    font-family: var(--font-serif);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.75; }
+  .footer-col h4 {
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+  .footer-col ul li { margin-bottom: 0.65rem; }
+  .footer-col ul a {
+    font-size: 0.87rem;
+    color: rgba(255,255,255,0.6);
+    transition: color var(--transition);
+  }
+  .footer-col ul a:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-social { display: flex; gap: 1rem; }
+  .social-link {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(199,161,74,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    transition: all var(--transition);
+  }
+  .social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .social-link svg { width: 14px; height: 14px; }
+  .footer-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ===========================
+     SCROLL REVEAL ANIMATIONS
+  =========================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ===========================
+     SECTION DIVIDER
+  =========================== */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--grey-mid); }
+  .divider-diamond {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ===========================
+     RESPONSIVE
+  =========================== */
+  @media (max-width: 1024px) {
+    .hero-contact-card { display: none; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .indicateurs-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .model-grid { gap: 3rem; }
+    .impact-grid { gap: 3rem; }
+    .contact-grid { gap: 3rem; }
+  }
+
+  @media (max-width: 768px) {
+    .section-pad { padding: 64px 0; }
+    .container { padding: 0 1.5rem; }
+    nav { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero-content { max-width: 100%; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .valeurs-grid { grid-template-columns: 1fr; }
+    .model-grid { grid-template-columns: 1fr; }
+    .model-visual { display: none; }
+    .domaines-grid { grid-template-columns: 1fr; }
+    .projets-grid { grid-template-columns: 1fr; }
+    .projets-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .impact-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .indicateurs-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+    .hero-actions { flex-direction: column; }
+    .offices-grid { grid-template-columns: 1fr; }
+    .impact-countries { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===========================
+     HEADER
+=========================== -->
+<header class="header" id="header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="44" height="44" rx="4" fill="rgba(199,161,74,0.08)"/>
+          <path d="M22 6 L36 14 L36 30 L22 38 L8 30 L8 14 Z" stroke="#C7A14A" stroke-width="1.2" fill="none"/>
+          <path d="M22 12 L30 17 L30 27 L22 32 L14 27 L14 17 Z" stroke="#C7A14A" stroke-width="0.8" fill="none" opacity="0.5"/>
+          <circle cx="22" cy="22" r="3" fill="#C7A14A"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-name">IMAAD</span>
+          <span class="logo-sub">Financial Group</span>
+        </div>
+      </a>
+      <!-- Navigation -->
+      <nav>
+        <a href="#propos">À propos</a>
+        <a href="#domaines">Domaines</a>
+        <a href="#projets">Projets</a>
+        <a href="#equipe">Équipe</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn-gold nav-cta">Nous contacter</a>
+      <!-- Hamburger -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===========================
+     HERO SECTION
+=========================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-arc"></div>
+
+  <div class="container" style="position:relative;z-index:1;width:100%;">
+    <div class="hero-content">
+      <div class="hero-pretitle">Banque d'affaires panafricaine</div>
+      <h1>Catalyseur de la <em>souveraineté</em> et de la croissance durable</h1>
+      <p class="hero-desc">IMAAD Financial Group structure et finance des projets souverains, PPP et corporate en Afrique, au Moyen-Orient et en Amérique Latine.</p>
+      <div class="hero-actions">
+        <a href="#domaines" class="btn btn-gold">
+          Découvrir nos solutions
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="#projets" class="btn btn-outline-white">Voir nos réalisations</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">+1 Md €</span>
+          <span class="hero-stat-label">Mobilisé depuis 2020</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">+20</span>
+          <span class="hero-stat-label">Projets PPP structurés</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">15+</span>
+          <span class="hero-stat-label">Pays couverts</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">8</span>
+          <span class="hero-stat-label">Bureaux internationaux</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick contact card (desktop only) -->
+  <div class="hero-contact-card">
+    <h4>Contact Rapide</h4>
+    <input type="text" placeholder="Nom / Organisation">
+    <a href="#contact" class="btn btn-gold" style="font-size:0.75rem;padding:0.75rem 1.25rem;">
+      Contacter nos experts
+    </a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- ===========================
+     VALEURS
+=========================== -->
+<section class="valeurs section-pad" id="propos">
+  <div class="container">
+    <div class="reveal">
+      <span class="label-section">Notre modèle</span>
+      <h2 style="color:var(--navy);max-width:560px;">Une banque d'affaires au service du développement durable</h2>
+      <p style="max-width:600px;color:#666;margin-top:1rem;line-height:1.8;">IMAAD Financial Group place la finance au service du développement, de la compétitivité et de la durabilité. Nous combinons vision internationale et exécution locale.</p>
+    </div>
+
+    <div class="valeurs-grid">
+      <div class="valeur-card reveal reveal-delay-1">
+        <div class="valeur-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M14 3 L25 8 L25 20 L14 25 L3 20 L3 8 Z"/>
+            <circle cx="14" cy="14" r="4"/>
+          </svg>
+        </div>
+        <h3>Souveraineté</h3>
+        <p>Renforcer l'autonomie financière des États et des institutions publiques à travers des mécanismes de financement adaptés à leur réalité.</p>
+      </div>
+      <div class="valeur-card reveal reveal-delay-2">
+        <div class="valeur-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="14" cy="14" r="11"/>
+            <path d="M14 8 L14 14 L19 17"/>
+            <path d="M8 14 L20 14" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <h3>Impact</h3>
+        <p>Des projets durables créateurs d'emplois et de valeur sociale, alignés sur les ODD et les priorités de développement régionales.</p>
+      </div>
+      <div class="valeur-card reveal reveal-delay-3">
+        <div class="valeur-icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M4 20 L10 14 L14 18 L20 10 L24 14"/>
+            <path d="M20 10 L24 10 L24 14"/>
+          </svg>
+        </div>
+        <h3>Excellence</h3>
+        <p>Une exécution de haute précision portée par des équipes pluridisciplinaires et une expertise sectorielle reconnue à l'échelle internationale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     MODELE & APPROCHE
+=========================== -->
+<section class="model-section section-pad">
+  <div class="container">
+    <div class="model-grid">
+      <div class="model-visual reveal">
+        <div class="model-visual-box">
+          <div class="model-visual-inner">
+            <div class="model-globe">
+              <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+                <circle cx="80" cy="80" r="78" stroke="rgba(199,161,74,0.2)" stroke-width="1"/>
+                <ellipse cx="80" cy="80" rx="40" ry="78" stroke="rgba(199,161,74,0.15)" stroke-width="1"/>
+                <line x1="2" y1="80" x2="158" y2="80" stroke="rgba(199,161,74,0.12)" stroke-width="1"/>
+                <line x1="2" y1="55" x2="158" y2="55" stroke="rgba(199,161,74,0.08)" stroke-width="1"/>
+                <line x1="2" y1="105" x2="158" y2="105" stroke="rgba(199,161,74,0.08)" stroke-width="1"/>
+              </svg>
+            </div>
+            <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;font-family:var(--font-title);letter-spacing:0.1em;text-transform:uppercase;">Présence intercontinentale</p>
+          </div>
+        </div>
+        <div class="model-badge">
+          <span class="model-badge-num">2020</span>
+          <span class="model-badge-label">Fondé en</span>
+        </div>
+      </div>
+
+      <div class="model-text reveal reveal-delay-2">
+        <span class="label-section">Qui sommes-nous</span>
+        <h2>Une banque d'affaires panafricaine à vocation internationale</h2>
+        <p>Depuis 2020, IMAAD Financial Group s'est imposé comme un acteur de référence dans la structuration et le financement de projets stratégiques sur les marchés émergents.</p>
+        <p>Notre approche combine expertise financière de haut niveau, connaissance des marchés locaux et réseau de partenaires institutionnels de premier plan.</p>
+        <div class="model-pillars">
+          <div class="pillar">
+            <div class="pillar-dot"></div>
+            <div>
+              <h4>Financement souverain & concessionnels</h4>
+              <p>Mobilisation de financements concessionnels, restructuration de dette publique et appuis budgétaires.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-dot"></div>
+            <div>
+              <h4>Partenariats Public-Privé (PPP)</h4>
+              <p>Conseil, structuration et développement d'infrastructures en partenariat étatique et privé.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-dot"></div>
+            <div>
+              <h4>Corporate & Trade Finance</h4>
+              <p>Financement CAPEX & OPEX pour entreprises : industrie, logistique, immobilier.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     DOMAINES D'EXCELLENCE
+=========================== -->
+<section class="domaines section-pad" id="domaines">
+  <div class="container">
+    <div class="domaines-header reveal">
+      <span class="label-section" style="color:var(--gold);">Nos expertises</span>
+      <h2>Domaines d'Excellence</h2>
+      <p>Solutions sur-mesure pour États, entreprises et investisseurs à travers trois axes stratégiques complémentaires.</p>
+    </div>
+
+    <div class="domaines-grid">
+      <!-- Financement Souverain -->
+      <div class="domaine-card reveal reveal-delay-1">
+        <span class="domaine-num">01</span>
+        <div class="domaine-icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M6 30 L20 6 L34 30 Z"/>
+            <path d="M13 30 L13 22 L27 22 L27 30"/>
+            <line x1="6" y1="30" x2="34" y2="30"/>
+            <circle cx="20" cy="16" r="3"/>
+          </svg>
+        </div>
+        <h3>Financement Souverain</h3>
+        <p>Mobilisation de financements concessionnels, restructuration et optimisation de la dette publique, et appuis budgétaires pour États et institutions publiques.</p>
+        <a href="domaines.html" class="domaine-link">
+          Voir plus
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+      </div>
+
+      <!-- PPP -->
+      <div class="domaine-card reveal reveal-delay-2">
+        <span class="domaine-num">02</span>
+        <div class="domaine-icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <rect x="6" y="16" width="12" height="18"/>
+            <rect x="22" y="10" width="12" height="24"/>
+            <path d="M6 16 L12 6 L18 16"/>
+            <path d="M22 10 L28 2 L34 10"/>
+            <line x1="2" y1="34" x2="38" y2="34"/>
+          </svg>
+        </div>
+        <h3>Partenariats Public-Privé (PPP)</h3>
+        <p>Conseil, structuration et développement d'infrastructures en partenariat étatique et privé. Routes, hôpitaux, énergie, eau : nous accompagnons chaque étape du cycle projet.</p>
+        <a href="domaines.html" class="domaine-link">
+          Voir plus
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+      </div>
+
+      <!-- Corporate -->
+      <div class="domaine-card reveal reveal-delay-3">
+        <span class="domaine-num">03</span>
+        <div class="domaine-icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="20" cy="20" r="14"/>
+            <path d="M20 10 L20 20 L28 24"/>
+            <path d="M14 8 C14 8 10 14 20 14 C30 14 26 8 26 8"/>
+          </svg>
+        </div>
+        <h3>Corporate & Trade Finance</h3>
+        <p>Financement CAPEX & OPEX pour entreprises des secteurs industrie, logistique et immobilier. Solutions structurées adaptées aux marchés émergents.</p>
+        <a href="domaines.html" class="domaine-link">
+          Voir plus
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     INDICATEURS CLÉS
+=========================== -->
+<section class="indicateurs section-pad-sm">
+  <div class="container">
+    <div class="indicateurs-header reveal">
+      <span class="label-section">Performance</span>
+      <h2>Chiffres clés</h2>
+    </div>
+    <div class="indicateurs-grid">
+      <div class="indicateur reveal reveal-delay-1">
+        <span class="indicateur-num">+1 Md €</span>
+        <span class="indicateur-label">Mobilisé</span>
+        <span class="indicateur-sub">Depuis 2020</span>
+      </div>
+      <div class="indicateur reveal reveal-delay-2">
+        <span class="indicateur-num">+20</span>
+        <span class="indicateur-label">Projets PPP</span>
+        <span class="indicateur-sub">Structurés & closés</span>
+      </div>
+      <div class="indicateur reveal reveal-delay-3">
+        <span class="indicateur-num">15+</span>
+        <span class="indicateur-label">Pays</span>
+        <span class="indicateur-sub">Afrique, MENA, LATAM</span>
+      </div>
+      <div class="indicateur reveal reveal-delay-4">
+        <span class="indicateur-num">8</span>
+        <span class="indicateur-label">Bureaux</span>
+        <span class="indicateur-sub">Présence internationale</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     PROJETS PHARES
+=========================== -->
+<section class="projets-phares section-pad" id="projets">
+  <div class="container">
+    <div class="projets-header reveal">
+      <div>
+        <span class="label-section">Réalisations</span>
+        <h2 style="color:var(--navy);">Projets & Impact</h2>
+      </div>
+      <a href="projets.html" class="btn btn-outline-gold">Voir tous les projets</a>
+    </div>
+
+    <div class="projets-grid">
+      <div class="projet-card reveal reveal-delay-1">
+        <div class="projet-img projet-img-1">
+          <div class="projet-badge">
+            <span class="projet-pays">🇨🇮 Côte d'Ivoire</span>
+            <span class="projet-statut statut-close">Closé 2023</span>
+          </div>
+        </div>
+        <div class="projet-body">
+          <h3>Route Abidjan – San Pédro</h3>
+          <span class="projet-montant">150 M€</span>
+          <p class="projet-desc">Structuration et closing du financement d'un axe routier stratégique reliant Abidjan au port de San Pédro.</p>
+        </div>
+      </div>
+
+      <div class="projet-card reveal reveal-delay-2">
+        <div class="projet-img projet-img-2">
+          <div class="projet-badge">
+            <span class="projet-pays">🇨🇮 Côte d'Ivoire</span>
+            <span class="projet-statut statut-progress">Closing 2026</span>
+          </div>
+        </div>
+        <div class="projet-body">
+          <h3>Adduction d'eau Grand-Abidjan</h3>
+          <span class="projet-montant">278 M€</span>
+          <p class="projet-desc">Financement de l'extension du réseau d'eau potable pour 4,5 millions d'habitants de la métropole abidjanaise.</p>
+        </div>
+      </div>
+
+      <div class="projet-card reveal reveal-delay-3">
+        <div class="projet-img projet-img-3">
+          <div class="projet-badge">
+            <span class="projet-pays">🇳🇬 Nigéria</span>
+            <span class="projet-statut statut-close">Closé 2026</span>
+          </div>
+        </div>
+        <div class="projet-body">
+          <h3>Renforcement Réseau Gaz</h3>
+          <span class="projet-montant">500 M€</span>
+          <p class="projet-desc">Structuration du financement pour le renforcement et l'extension du réseau de distribution de gaz naturel au Nigéria.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     IMPACT & CARTE
+=========================== -->
+<section class="impact section-pad">
+  <div class="container">
+    <div class="impact-grid">
+      <div class="impact-text reveal">
+        <span class="label-section">Notre empreinte</span>
+        <h2>Des résultats mesurables, une vision durable</h2>
+        <p>IMAAD Financial Group intervient là où les besoins en financement sont les plus critiques, avec une approche structurée et un engagement long terme sur chaque marché.</p>
+        <div class="impact-list">
+          <div class="impact-item">
+            <div class="impact-check">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6 L5 9 L10 3"/></svg>
+            </div>
+            Présence active dans 8 pays africains
+          </div>
+          <div class="impact-item">
+            <div class="impact-check">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6 L5 9 L10 3"/></svg>
+            </div>
+            Financement d'infrastructures critiques (eau, énergie, transport)
+          </div>
+          <div class="impact-item">
+            <div class="impact-check">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6 L5 9 L10 3"/></svg>
+            </div>
+            Partenariats avec institutions multilatérales (BAD, BM, IFC)
+          </div>
+          <div class="impact-item">
+            <div class="impact-check">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6 L5 9 L10 3"/></svg>
+            </div>
+            Alignement sur les ODD et les cadres ESG internationaux
+          </div>
+        </div>
+      </div>
+
+      <div class="impact-map reveal reveal-delay-2">
+        <div class="map-container">
+          <!-- Stylized Africa SVG -->
+          <svg viewBox="0 0 300 380" class="africa-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="africaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:rgba(199,161,74,0.15)"/>
+                <stop offset="100%" style="stop-color:rgba(199,161,74,0.05)"/>
+              </linearGradient>
+            </defs>
+            <!-- Simplified Africa outline -->
+            <path d="M 120 10 L 170 8 L 210 20 L 240 45 L 255 70 L 260 100 L 252 130 L 270 155 L 275 180 L 265 210 L 250 240 L 230 265 L 210 285 L 195 310 L 180 340 L 165 360 L 155 370 L 148 360 L 135 340 L 120 310 L 100 280 L 80 250 L 65 220 L 50 190 L 40 160 L 30 130 L 28 100 L 35 70 L 50 45 L 75 25 L 100 12 Z"
+              fill="url(#africaGrad)"
+              stroke="rgba(199,161,74,0.4)"
+              stroke-width="1.5"/>
+            <!-- Internal lines suggesting countries -->
+            <path d="M 80 120 L 220 120" stroke="rgba(199,161,74,0.1)" stroke-width="0.5"/>
+            <path d="M 60 180 L 260 170" stroke="rgba(199,161,74,0.1)" stroke-width="0.5"/>
+            <path d="M 140 10 L 160 200" stroke="rgba(199,161,74,0.08)" stroke-width="0.5"/>
+            <path d="M 90 60 L 240 100" stroke="rgba(199,161,74,0.08)" stroke-width="0.5"/>
+          </svg>
+
+          <!-- Map Pins -->
+          <div class="map-pin" data-label="Abidjan" style="left:27%;top:52%;"></div>
+          <div class="map-pin" data-label="Dakar" style="left:18%;top:38%;"></div>
+          <div class="map-pin" data-label="Lagos" style="left:38%;top:53%;"></div>
+          <div class="map-pin" data-label="Kigali" style="left:55%;top:60%;"></div>
+          <div class="map-pin" data-label="Conakry" style="left:22%;top:48%;"></div>
+          <div class="map-pin" data-label="Yaoundé" style="left:44%;top:60%;"></div>
+          <div class="map-pin" data-label="Nairobi" style="left:60%;top:63%;"></div>
+        </div>
+        <div class="impact-countries">
+          <div class="country-tag">🇨🇮 Côte d'Ivoire</div>
+          <div class="country-tag">🇳🇬 Nigéria</div>
+          <div class="country-tag">🇸🇳 Sénégal</div>
+          <div class="country-tag">🇷🇼 Rwanda</div>
+          <div class="country-tag">🇬🇳 Guinée</div>
+          <div class="country-tag">🇨🇲 Cameroun</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     EQUIPE & GOUVERNANCE
+=========================== -->
+<section class="equipe section-pad" id="equipe">
+  <div class="container">
+    <div class="equipe-header reveal">
+      <span class="label-section">Leadership</span>
+      <h2>Équipe & Gouvernance</h2>
+      <p>Leadership, intégrité et influence intercontinentale — une équipe dirigeante forgée par l'expérience internationale.</p>
+    </div>
+
+    <div class="team-grid">
+      <!-- Co-Fondateur 1 -->
+      <div class="team-card reveal reveal-delay-1">
+        <div class="team-photo">
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="18" cy="13" r="7"/>
+              <path d="M4 34 C4 26 10 20 18 20 C26 20 32 26 32 34"/>
+            </svg>
+          </div>
+          <div class="team-overlay">
+            <a href="#" class="team-linkedin">
+              <svg viewBox="0 0 18 18" fill="currentColor"><path d="M4 6H1v12h3V6zM2.5 4.5A1.5 1.5 0 1 0 1 3a1.5 1.5 0 0 0 1.5 1.5zM17 18h-3v-4.7c0-1.2-.4-2-1.4-2s-1.6.7-1.6 2V18H8V6h3v1.4a3.4 3.4 0 0 1 3-1.7c2 0 3 1.4 3 4V18z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="team-gold-bar"></div>
+        <div class="team-info">
+          <h3 class="team-name">Issa Mehmet N'Diaye</h3>
+          <div class="team-role">Co-fondateur & Directeur Général</div>
+          <p class="team-bio">Architecte de la stratégie d'ensemble du groupe, Issa apporte une expertise de 20 ans en finance structurée et en marchés émergents africains.</p>
+        </div>
+      </div>
+
+      <!-- Co-Fondatrice 2 -->
+      <div class="team-card reveal reveal-delay-2">
+        <div class="team-photo">
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="18" cy="13" r="7"/>
+              <path d="M4 34 C4 26 10 20 18 20 C26 20 32 26 32 34"/>
+            </svg>
+          </div>
+          <div class="team-overlay">
+            <a href="#" class="team-linkedin">
+              <svg viewBox="0 0 18 18" fill="currentColor"><path d="M4 6H1v12h3V6zM2.5 4.5A1.5 1.5 0 1 0 1 3a1.5 1.5 0 0 0 1.5 1.5zM17 18h-3v-4.7c0-1.2-.4-2-1.4-2s-1.6.7-1.6 2V18H8V6h3v1.4a3.4 3.4 0 0 1 3-1.7c2 0 3 1.4 3 4V18z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="team-gold-bar"></div>
+        <div class="team-info">
+          <h3 class="team-name">Rym Moulaye-Idriss</h3>
+          <div class="team-role">Co-fondatrice & Directrice Générale</div>
+          <p class="team-bio">Spécialiste des financements multilatéraux et des PPP, Rym pilote les relations institutionnelles et la structuration des transactions majeures.</p>
+        </div>
+      </div>
+
+      <!-- Président -->
+      <div class="team-card reveal reveal-delay-3">
+        <div class="team-photo">
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="18" cy="13" r="7"/>
+              <path d="M4 34 C4 26 10 20 18 20 C26 20 32 26 32 34"/>
+            </svg>
+          </div>
+          <div class="team-overlay">
+            <a href="#" class="team-linkedin">
+              <svg viewBox="0 0 18 18" fill="currentColor"><path d="M4 6H1v12h3V6zM2.5 4.5A1.5 1.5 0 1 0 1 3a1.5 1.5 0 0 0 1.5 1.5zM17 18h-3v-4.7c0-1.2-.4-2-1.4-2s-1.6.7-1.6 2V18H8V6h3v1.4a3.4 3.4 0 0 1 3-1.7c2 0 3 1.4 3 4V18z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="team-gold-bar"></div>
+        <div class="team-info">
+          <h3 class="team-name">Pierre Wolf</h3>
+          <div class="team-role">Président du Conseil de Gestion</div>
+          <p class="team-bio">Ancien banquier senior international, Pierre garantit la gouvernance du groupe et préside le comité d'investissement avec rigueur et indépendance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem;" class="reveal">
+      <a href="equipe.html" class="btn btn-outline-gold">Voir toute l'équipe</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     CONTACT
+=========================== -->
+<section class="contact section-pad" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="label-section">Travaillons ensemble</span>
+        <h2>Nous contacter</h2>
+        <p>Pour toute demande institutionnelle, partenariat stratégique ou soumission de projet, notre équipe vous répond dans les 48 heures.</p>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 4 L15 4 L15 14 L3 14 Z"/><path d="M3 4 L9 10 L15 4"/></svg>
+          </div>
+          <div>
+            <span class="contact-detail-label">Email</span>
+            <span class="contact-detail-value">info@imaadfg.com</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 3 L8 3 L10 8 L7 9.5 C8.5 12.5 11 15 14 16.5 L15.5 13.5 L21 15.5 L21 20.5 C16 22 4 16 3 3Z" transform="scale(0.8) translate(1,1)"/></svg>
+          </div>
+          <div>
+            <span class="contact-detail-label">Téléphone</span>
+            <span class="contact-detail-value">(+221) 77 245 7987</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><path d="M9 1 C5.7 1 3 3.7 3 7 C3 11.5 9 17 9 17 C9 17 15 11.5 15 7 C15 3.7 12.3 1 9 1Z"/></svg>
+          </div>
+          <div>
+            <span class="contact-detail-label">Bureaux internationaux</span>
+            <div class="offices-grid" style="margin-top:0.75rem;">
+              <div class="office-tag">🇦🇪 Dubaï</div>
+              <div class="office-tag">🇬🇧 Londres</div>
+              <div class="office-tag">🇨🇮 Abidjan</div>
+              <div class="office-tag">🇷🇼 Kigali</div>
+              <div class="office-tag">🇬🇳 Conakry</div>
+              <div class="office-tag">🇸🇳 Dakar</div>
+              <div class="office-tag">🇳🇬 Lagos</div>
+              <div class="office-tag">🇨🇲 Yaoundé</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <div class="contact-form">
+          <h3 style="color:var(--navy);margin-bottom:1.75rem;font-size:1.1rem;">Envoyer une demande</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nom complet *</label>
+              <input type="text" placeholder="Jean Dupont">
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" placeholder="jean@organisation.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Organisation</label>
+              <input type="text" placeholder="Votre organisation">
+            </div>
+            <div class="form-group">
+              <label>Objet de la demande</label>
+              <select>
+                <option value="">Sélectionner...</option>
+                <option>Financement souverain</option>
+                <option>Partenariat PPP</option>
+                <option>Corporate & Trade Finance</option>
+                <option>Partenariat stratégique</option>
+                <option>Demande presse</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Décrivez votre projet ou votre demande..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button class="btn btn-gold" onclick="submitForm(this)">
+              Envoyer la demande
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            ✓ Votre demande a été envoyée avec succès. Notre équipe vous répondra dans les 48 heures.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>IMAAD Financial Group</h3>
+        <span class="tagline">Catalyseur de la souveraineté et de la croissance durable.</span>
+        <div class="footer-divider"></div>
+        <p>Banque d'affaires panafricaine spécialisée dans la structuration et le financement de projets souverains, PPP et corporate sur les marchés émergents.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#propos">À propos</a></li>
+          <li><a href="domaines.html">Domaines d'excellence</a></li>
+          <li><a href="projets.html">Projets & Impact</a></li>
+          <li><a href="equipe.html">Équipe & Gouvernance</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="#">Télécharger la brochure</a></li>
+          <li><a href="#">Actualités & Insights</a></li>
+          <li><a href="#">Carrières</a></li>
+          <li><a href="#">Soumettre un projet</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@imaadfg.com">info@imaadfg.com</a></li>
+          <li><a href="tel:+221772457987">(+221) 77 245 7987</a></li>
+          <li style="margin-top:1rem;">
+            <span style="font-size:0.78rem;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:0.5rem;">Bureaux</span>
+            <a href="#">Dubaï · Londres · Abidjan</a>
+          </li>
+          <li><a href="#">Kigali · Conakry · Dakar</a></li>
+          <li><a href="#">Lagos · Yaoundé</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 IMAAD Financial Group. Tous droits réservés.</span>
+      <div class="footer-social">
+        <!-- LinkedIn -->
+        <a href="#" class="social-link" title="LinkedIn">
+          <svg viewBox="0 0 18 18" fill="currentColor"><path d="M4 6H1v12h3V6zM2.5 4.5A1.5 1.5 0 1 0 1 3a1.5 1.5 0 0 0 1.5 1.5zM17 18h-3v-4.7c0-1.2-.4-2-1.4-2s-1.6.7-1.6 2V18H8V6h3v1.4a3.4 3.4 0 0 1 3-1.7c2 0 3 1.4 3 4V18z"/></svg>
+        </a>
+        <!-- Twitter -->
+        <a href="#" class="social-link" title="Twitter / X">
+          <svg viewBox="0 0 18 18" fill="currentColor"><path d="M17 3.5a7.4 7.4 0 0 1-2.1.6 3.7 3.7 0 0 0 1.6-2 7.4 7.4 0 0 1-2.3.9A3.7 3.7 0 0 0 3.8 7c0 .3 0 .6.1.8A10.5 10.5 0 0 1 1.3 4.3a3.7 3.7 0 0 0 1.1 4.9 3.7 3.7 0 0 1-1.7-.5v.1a3.7 3.7 0 0 0 3 3.6 3.7 3.7 0 0 1-1.7.1 3.7 3.7 0 0 0 3.4 2.6A7.4 7.4 0 0 1 1 15.3a10.5 10.5 0 0 0 5.7 1.7c6.8 0 10.5-5.6 10.5-10.5V6A7.4 7.4 0 0 0 17 3.5z"/></svg>
+        </a>
+      </div>
+      <span>
+        <a href="#" style="color:inherit;margin-right:1rem;">Mentions légales</a>
+        <a href="#" style="color:inherit;">Politique de confidentialité</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===========================
+     JAVASCRIPT
+=========================== -->
+<script>
+  // Header scroll behavior
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.position = 'absolute';
+    nav.style.top = '70px';
+    nav.style.left = '0';
+    nav.style.right = '0';
+    nav.style.background = 'rgba(11,31,58,0.97)';
+    nav.style.padding = '2rem';
+    nav.style.gap = '1.5rem';
+    nav.style.zIndex = '999';
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  function submitForm(btn) {
+    btn.textContent = 'Envoi en cours...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('formSuccess').style.display = 'block';
+      btn.textContent = '✓ Envoyé';
+    }, 1500);
+  }
+
+  // Animated counters
+  function animateCounter(el, target, suffix) {
+    const duration = 1800;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = (suffix === 'Md' ? '+' + Math.round(current) + ' Md €' :
+                        suffix === '+' ? '+' + Math.round(current) :
+                        Math.round(current) + '+');
+    }, duration / steps);
+  }
+
+  // Trigger counter animation when visible
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const nums = e.target.querySelectorAll('.indicateur-num');
+        const targets = [1, 20, 15, 8];
+        const suffixes = ['Md', '+', '+', ''];
+        nums.forEach((num, i) => animateCounter(num, targets[i], suffixes[i]));
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  const indicGrid = document.querySelector('.indicateurs-grid');
+  if (indicGrid) counterObserver.observe(indicGrid);
+</script>
+</body>
+</html>

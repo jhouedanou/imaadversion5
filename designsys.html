@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System — IMAAD Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A; --gold: #C7A14A; --gold-light: #d9b86a; --gold-dark: #a8853a;
+    --white: #FFFFFF; --off-white: #F8F6F1; --grey-mid: #E0DDD6;
+    --font-title: 'Montserrat', sans-serif; --font-body: 'Open Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); background: #F0EDE8; color: #2C2C2C; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .page-header { background: var(--navy); padding: 3rem 0; }
+  .page-header h1 { font-family: var(--font-title); color: var(--white); font-size: 2rem; margin-bottom: 0.5rem; }
+  .page-header p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+  .ds-section { background: var(--white); border-radius: 12px; padding: 2.5rem; margin: 2rem 0; }
+  .ds-section h2 { font-family: var(--font-title); color: var(--navy); font-size: 1rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--grey-mid); }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+  .color-swatch { border-radius: 8px; overflow: hidden; }
+  .swatch-block { height: 80px; }
+  .swatch-info { padding: 0.75rem; background: var(--off-white); }
+  .swatch-name { font-family: var(--font-title); font-size: 0.72rem; font-weight: 700; color: var(--navy); display: block; }
+  .swatch-hex { font-size: 0.78rem; color: #666; font-family: monospace; }
+  .swatch-var { font-size: 0.68rem; color: #999; font-family: monospace; }
+  .type-samples { display: flex; flex-direction: column; gap: 1.5rem; }
+  .type-sample { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; align-items: center; padding-bottom: 1.5rem; border-bottom: 1px solid var(--grey-mid); }
+  .type-meta { font-size: 0.78rem; color: #999; }
+  .type-meta strong { display: block; color: #555; font-family: monospace; }
+  .btn-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-title); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 4px; border: none; cursor: default; }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-outline-gold { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+  .btn-outline-white-demo { background: var(--navy); color: rgba(255,255,255,0.8); border: 1.5px solid rgba(255,255,255,0.4); }
+  .spacing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+  .spacing-item { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  .spacing-bar { background: var(--gold); height: 8px; border-radius: 2px; }
+  .spacing-label { font-size: 0.78rem; color: #666; font-family: monospace; }
+  .component-demo { background: var(--off-white); border-radius: 8px; padding: 2rem; margin-top: 1rem; }
+  .nav-demo { background: var(--navy); padding: 1rem 1.5rem; border-radius: 8px; display: flex; align-items: center; gap: 2rem; margin-bottom: 1rem; }
+  .nav-demo-link { font-family: var(--font-title); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+  .card-demo { background: var(--white); border-radius: 10px; padding: 2rem; border: 1px solid var(--grey-mid); box-shadow: 0 4px 24px rgba(11,31,58,0.10); max-width: 360px; }
+  .grid-demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { font-family: var(--font-title); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); padding: 0.75rem 1rem; background: var(--off-white); text-align: left; }
+  td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--grey-mid); color: #555; }
+  code { font-family: monospace; font-size: 0.85rem; background: #f0ede8; padding: 0.15rem 0.4rem; border-radius: 3px; color: var(--navy); }
+  .status-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 3px; font-family: var(--font-title); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .badge-required { background: rgba(239,68,68,0.1); color: #dc2626; border: 1px solid rgba(239,68,68,0.3); }
+  .badge-optional { background: rgba(199,161,74,0.1); color: var(--gold-dark); border: 1px solid rgba(199,161,74,0.3); }
+</style>
+</head>
+<body>
+<div class="page-header">
+  <div class="container">
+    <h1>Design System — IMAAD Financial Group</h1>
+    <p>Guide complet pour le graphiste et web designer. Version 1.0 — Mars 2025.</p>
+  </div>
+</div>
+
+<div style="padding: 2rem 0 4rem;">
+<div class="container">
+
+  <!-- COULEURS -->
+  <div class="ds-section">
+    <h2>Palette de couleurs</h2>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#0B1F3A;"></div>
+        <div class="swatch-info"><span class="swatch-name">Navy (Dominante)</span><span class="swatch-hex">#0B1F3A</span><span class="swatch-var">--navy</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#112844;"></div>
+        <div class="swatch-info"><span class="swatch-name">Navy Mid</span><span class="swatch-hex">#112844</span><span class="swatch-var">--navy-mid</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#1a3556;"></div>
+        <div class="swatch-info"><span class="swatch-name">Navy Light</span><span class="swatch-hex">#1A3556</span><span class="swatch-var">--navy-light</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#C7A14A;"></div>
+        <div class="swatch-info"><span class="swatch-name">Or (Accent)</span><span class="swatch-hex">#C7A14A</span><span class="swatch-var">--gold</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#d9b86a;"></div>
+        <div class="swatch-info"><span class="swatch-name">Or Clair (Hover)</span><span class="swatch-hex">#D9B86A</span><span class="swatch-var">--gold-light</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#a8853a;"></div>
+        <div class="swatch-info"><span class="swatch-name">Or Foncé</span><span class="swatch-hex">#A8853A</span><span class="swatch-var">--gold-dark</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#FFFFFF; border:1px solid #E0DDD6;"></div>
+        <div class="swatch-info"><span class="swatch-name">Blanc</span><span class="swatch-hex">#FFFFFF</span><span class="swatch-var">--white</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#F8F6F1;"></div>
+        <div class="swatch-info"><span class="swatch-name">Blanc Cassé</span><span class="swatch-hex">#F8F6F1</span><span class="swatch-var">--off-white</span></div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-block" style="background:#E0DDD6;"></div>
+        <div class="swatch-info"><span class="swatch-name">Gris Moyen</span><span class="swatch-hex">#E0DDD6</span><span class="swatch-var">--grey-mid</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHIE -->
+  <div class="ds-section">
+    <h2>Typographie</h2>
+    <div class="type-samples">
+      <div class="type-sample">
+        <div class="type-meta"><strong>H1 — Montserrat 800</strong>Clamp(2.6rem → 4.2rem)<br>line-height: 1.08<br>letter-spacing: -0.01em</div>
+        <h1 style="font-family:var(--font-title);font-weight:800;font-size:3.5rem;color:var(--navy);line-height:1.08;">Titre Principal</h1>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><strong>H2 — Montserrat 700</strong>Clamp(1.6rem → 2.6rem)<br>line-height: 1.15</div>
+        <h2 style="font-family:var(--font-title);font-weight:700;font-size:2.2rem;color:var(--navy);">Titre de Section</h2>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><strong>H3 — Montserrat 600</strong>Clamp(1.1rem → 1.4rem)</div>
+        <h3 style="font-family:var(--font-title);font-weight:600;font-size:1.25rem;color:var(--navy);">Titre de Carte</h3>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><strong>Label Section</strong>0.72rem • 700 • LS 0.18em<br>uppercase • couleur: --gold</div>
+        <span style="font-family:var(--font-title);font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">NOS EXPERTISES</span>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><strong>Body — Open Sans 400</strong>1rem • line-height: 1.8</div>
+        <p style="font-size:1rem;line-height:1.8;color:#555;max-width:500px;">Corps de texte standard. IMAAD Financial Group place la finance au service du développement et de la durabilité, combinant vision internationale et exécution locale.</p>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta"><strong>Navigation — Montserrat 600</strong>0.75rem • LS 0.12em • uppercase</div>
+        <div style="display:flex;gap:2rem;">
+          <span style="font-family:var(--font-title);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.7);">À PROPOS</span>
+          <span style="font-family:var(--font-title);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.7);">DOMAINES</span>
+          <span style="font-family:var(--font-title);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">PROJETS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOUTONS -->
+  <div class="ds-section">
+    <h2>Composants — Boutons</h2>
+    <p style="font-size:0.88rem;color:#666;margin-bottom:1.5rem;">Tous les boutons : font-family Montserrat SemiBold, 0.82rem, letter-spacing 0.1em, UPPERCASE, border-radius 4px, padding 0.85rem 2rem.</p>
+    <div class="btn-grid">
+      <div>
+        <div class="btn btn-gold">Découvrir nos solutions →</div>
+        <p style="font-size:0.75rem;color:#999;margin-top:0.5rem;">Primaire — fond doré, texte navy</p>
+      </div>
+      <div>
+        <div class="btn btn-outline-gold">Voir plus →</div>
+        <p style="font-size:0.75rem;color:#999;margin-top:0.5rem;">Secondaire — contour doré</p>
+      </div>
+      <div style="background:var(--navy);padding:1rem;border-radius:6px;">
+        <div class="btn btn-outline-white-demo">Voir nos réalisations</div>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:0.5rem;">Sur fond navy — contour blanc</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESPACEMENT -->
+  <div class="ds-section">
+    <h2>Espacements</h2>
+    <table>
+      <thead><tr><th>Token</th><th>Valeur</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td><code>section-pad</code></td><td>96px 0</td><td>Padding standard des sections</td></tr>
+        <tr><td><code>section-pad-sm</code></td><td>64px 0</td><td>Sections compactes</td></tr>
+        <tr><td><code>section-pad-lg</code></td><td>120px 0</td><td>Sections hero secondaires</td></tr>
+        <tr><td><code>gap-cards</code></td><td>2rem (32px)</td><td>Espace entre cartes</td></tr>
+        <tr><td><code>gap-grid</code></td><td>1.5rem (24px)</td><td>Espace entre éléments de grille</td></tr>
+        <tr><td><code>container-padding</code></td><td>2.5rem (40px)</td><td>Padding horizontal du container</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BREAKPOINTS -->
+  <div class="ds-section">
+    <h2>Breakpoints Responsive</h2>
+    <table>
+      <thead><tr><th>Breakpoint</th><th>Largeur</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>Desktop</code></td><td>1440px</td><td>Mise en page principale, grilles 3–4 colonnes</td></tr>
+        <tr><td><code>Laptop</code></td><td>1280px</td><td>Max-width container</td></tr>
+        <tr><td><code>Tablette</code></td><td>max 1024px</td><td>Grilles 2 colonnes, cache hero-contact-card</td></tr>
+        <tr><td><code>Mobile M</code></td><td>max 768px</td><td>Grilles 1 colonne, hamburger menu</td></tr>
+        <tr><td><code>Mobile S</code></td><td>max 480px</td><td>Ajustements typographiques</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGES -->
+  <div class="ds-section">
+    <h2>Structure des pages</h2>
+    <table>
+      <thead><tr><th>Page</th><th>Fichier</th><th>Sections clés</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Accueil</strong></td><td><code>index.html</code></td><td>Hero, Valeurs, Modèle, Domaines, Indicateurs, Projets, Impact, Équipe, Contact</td><td><span class="status-badge badge-required">Livré</span></td></tr>
+        <tr><td><strong>Domaines d'Excellence</strong></td><td><code>domaines.html</code></td><td>Hero, 3 cards services, 3 détails pleine page</td><td><span class="status-badge badge-required">Livré</span></td></tr>
+        <tr><td><strong>Projets & Impact</strong></td><td><code>projets.html</code></td><td>Hero, Stats, Filtres, Grille projets, Jauges portefeuille</td><td><span class="status-badge badge-required">Livré</span></td></tr>
+        <tr><td><strong>Équipe & Gouvernance</strong></td><td><code>equipe.html</code></td><td>Hero bannière, Direction, Pays, Conseil consultatif</td><td><span class="status-badge badge-required">Livré</span></td></tr>
+        <tr><td><strong>Contact</strong></td><td>Intégré dans index.html</td><td>Formulaire 5 champs, infos bureaux</td><td><span class="status-badge badge-required">Livré</span></td></tr>
+        <tr><td><strong>Service (détail)</strong></td><td>Intégré dans domaines.html</td><td>Visuels, liste features, CTA</td><td><span class="status-badge badge-required">Livré</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ANIMATIONS -->
+  <div class="ds-section">
+    <h2>Animations & Interactions</h2>
+    <table>
+      <thead><tr><th>Élément</th><th>Animation</th><th>Timing</th></tr></thead>
+      <tbody>
+        <tr><td>Sections au scroll</td><td>fadeIn + translateY(30px → 0)</td><td>0.7s ease, stagger 0.1s par élément</td></tr>
+        <tr><td>Header au scroll</td><td>Opacité + backdrop-filter + shadow</td><td>0.35s cubic-bezier</td></tr>
+        <tr><td>Cartes hover</td><td>translateY(-6px) + box-shadow</td><td>0.35s cubic-bezier</td></tr>
+        <tr><td>Boutons hover</td><td>translateY(-2px) + glow gold</td><td>0.35s cubic-bezier</td></tr>
+        <tr><td>Compteurs indicateurs</td><td>Count-up animé</td><td>1.8s, déclenché au scroll</td></tr>
+        <tr><td>Barres portfolio</td><td>scaleX(0 → 1)</td><td>1.2s cubic-bezier, déclenché au scroll</td></tr>
+        <tr><td>Map pins</td><td>Pulse radial</td><td>2s ease-in-out infinite</td></tr>
+        <tr><td>Hover team/équipe</td><td>Overlay opacité 0 → 1</td><td>0.35s ease</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NOTES POUR LE DESIGNER -->
+  <div class="ds-section">
+    <h2>Notes importantes pour le graphiste</h2>
+    <ul style="display:flex;flex-direction:column;gap:1rem;font-size:0.9rem;color:#555;">
+      <li>📸 <strong>Photos équipe :</strong> Remplacer les placeholders (initiales) par des portraits professionnels en noir & blanc avec filtre bleu nuit. Format carré 600×600px minimum.</li>
+      <li>🖼️ <strong>Photos projets :</strong> Remplacer les fonds dégradés des cartes projets par des photos réelles des infrastructures concernées. Ratio 16:9, hauteur 200px.</li>
+      <li>🗺️ <strong>Carte Afrique :</strong> L'SVG simplifié de la section Impact peut être remplacé par une carte Mapbox/Leaflet interactive avec les pins de localisation réels.</li>
+      <li>🎥 <strong>Hero vidéo :</strong> Le fond hero peut accueillir une vidéo courte (5–10s, loop, muted) en overlay sur le dégradé navy. Format MP4, taille < 5MB.</li>
+      <li>📐 <strong>Logo :</strong> Fournir le fichier SVG final du logo IMAAD pour remplacer le logo géométrique placeholder utilisé dans le code.</li>
+      <li>📄 <strong>Brochure :</strong> Ajouter le lien vers le PDF de la brochure institutionnelle dans le footer (section Ressources).</li>
+      <li>🔗 <strong>LinkedIn :</strong> Mettre à jour les liens LinkedIn des membres de l'équipe dans equipe.html.</li>
+      <li>⚡ <strong>Performance :</strong> Compresser toutes les images (WebP recommandé), lazy-load les images hors viewport. Objectif : Lighthouse Score ≥ 90.</li>
+      <li>♿ <strong>Accessibilité :</strong> Le design respecte WCAG AA (contraste navy/#fff et gold/#0B1F3A validés). Ajouter les attributs alt sur toutes les images.</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
